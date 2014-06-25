@@ -29,7 +29,7 @@ after_success:
 notifications:
   irc:
     channels:
-    - irc.freenode.net#swim
+    - irc.freenode.net#swimtext
     on_success: change
     on_failure: always
 
