@@ -10,7 +10,9 @@ See http://github.com/ingydotnet/swim-pm#readme
 
 swim - See What I Mean?!
 
-<badge travis coveralls ingydotnet/swim-pm>
+=for html
+<a href="https://travis-ci.org/ingydotnet/swim-pm"><img src="https://travis-ci.org/ingydotnet/swim-pm.png" alt="swim-pm"></a>
+<a href="https://coveralls.io/r/ingydotnet/swim-pm?branch=master"><img src="https://coveralls.io/repos/ingydotnet/swim-pm/badge.png" alt="swim-pm"></a>
 
 =head1 DESCRIPTION
 
