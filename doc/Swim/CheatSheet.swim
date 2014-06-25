@@ -1,0 +1,16 @@
+= Swim Cheat Sheet
+
+This document shows you the basic things you can do with Swim. Take a look at
+the "raw source"<raw CheatSheet> to see the Swim that made this cheat-sheet.
+
+Swim is composed of /block/ and /phrase/ markup. For example a paragraph or
+list is a block, and a link or bold snippet is a phrase.
+
+= Block Markup
+
+Common blocks have special markup. There is also a /functional/ block markup
+that can be used to generate almost anything.
+
+= Phrase Markup
+
+This is an example

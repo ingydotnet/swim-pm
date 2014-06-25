@@ -1,0 +1,34 @@
+livepage
+========
+
+LivePage is an idea about documentation pages that show inputs and outputs and
+are interactive.
+
+Swim offers 
+
+
+
+
+
+== Swim Example
+
+.flip-flop
+= input 
+This is *bold* text.
+= swim-to-html(input)
+:flip-flop
+
+.div:class1 class2:
+Content goes /here/.
+:div
+
+=script http://…
+=css http://…
+
+.form
+=button
+:form
+
+=line
+
+----

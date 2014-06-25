@@ -1,0 +1,124 @@
+#!/usr/bin/env perl
+
+use strict;
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+use lib "$FindBin::Bin/../../pegex-pm/lib";
+use Pegex::Parser;
+use Swim::Grammar;
+use Getopt::Long;
+
+use Getopt::Long;
+
+my $to = "html";
+my $debug = $ENV{PERL_PEGEX_DEBUG} || 0;
+my %opts = (
+  'wrap' => 0,
+  'complete' => 0,
+  'pod-upper-head' => 0,
+);
+my %opt_spec = (
+  "to=s" => \$to,
+  "debug" => \$debug,
+  "complete=s" => \&opt,
+  "wrap=s" => \&opt,
+  "pod-upper-head=s" => \&opt,
+  "pod-cpan" => \&pod_cpan_opts,
+);
+
+sub main {
+  GetOptions(%opt_spec) or die "Error in command line arguments";
+
+  my $format_mapping = {
+    html => 'Swim::HTML',
+    md => 'Swim::Markdown',
+    markdown => 'Swim::Markdown',
+    pod => 'Swim::Pod',
+    byte => 'Swim::Byte',
+
+    man => \&to_man,
+    pdf => \&to_pdf,
+    dvi => \&to_dvi,
+  };
+
+  my $format = $format_mapping->{$to}
+    or die "Unknown output format '$to'";
+  my $swim = do {local $/; <>};
+  if (ref $format) {
+    $format->($swim);
+    return;
+  }
+  my $receiver_class = $format;
+  eval "require $receiver_class; 1"
+    or die "$@";
+
+  my $parser = Pegex::Parser->new(
+    grammar => 'Swim::Grammar'->new,
+    receiver => $receiver_class->new(option => \%opts),
+    debug => $debug,
+  );
+  print $parser->parse($swim);
+}
+
+sub to_man {
+  my ($swim) = @_;
+  print get_man($swim);
+}
+
+sub to_pdf {
+  my ($swim) = @_;
+  my ($in, $out, $err) = get_man($swim);
+  my @cmd = ('groffer', '--pdf');
+  IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
+    or die "$cmd[0]: $?";
+  die "$err" if $err;
+  print $out;
+}
+
+sub to_dvi {
+  my ($swim) = @_;
+  my ($in, $out, $err) = get_man($swim);
+  my @cmd = ('groffer', '--dvi');
+  IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
+    or die "$cmd[0]: $?";
+  die "$err" if $err;
+  print $out;
+}
+
+sub get_man {
+  require IPC::Run;
+  my ($in) = @_;
+  my ($out, $err);
+
+  my @cmd = ($0, '--to=pod');
+  IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
+    or die "$0: $?";
+  die "$err" if $err;
+
+  $in = $out;
+  @cmd = ('pod2man');
+  IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
+    or die "$0: $?";
+  die "$err" if $err;
+
+  $out;
+}
+
+sub opt {
+  my ($option, $value) = @_;
+  $opts{$option} =
+    $value =~ /^(true|1)$/ ? 1 :
+    $value =~ /^(false|0)$/ ? 0 :
+    0;
+}
+
+sub pod_cpan_opts {
+  $to = 'pod';
+  $opts{complete} = 1;
+  $opts{wrap} = 1;
+  $opts{'pod-upper-head'} = 1;
+}
+
+main();
+
+# vim: set sw=2:
