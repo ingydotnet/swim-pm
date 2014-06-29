@@ -1,4 +1,9 @@
 ---
+version: 0.1.3
+date:    Sun Jun 29 12:48:02 PDT 2014
+changes:
+- Add Text::Autoformat prereq. xdg++
+---
 version: 0.1.2
 date:    Wed Jun 25 14:40:14 PDT 2014
 changes:
