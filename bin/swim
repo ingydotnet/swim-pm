@@ -90,14 +90,9 @@ sub get_man {
   my ($in) = @_;
   my ($out, $err);
 
-  my @cmd = ($0, '--to=pod');
-  IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
-    or die "$0: $?";
-  die "$err" if $err;
-
-  $in = $out;
-  @cmd = ('pod2man');
-  IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
+  my @cmd1 = ($0, '--to=pod', '--complete=1', '--wrap=1');
+  my @cmd2 = ('pod2man', '--utf8');
+  IPC::Run::run(\@cmd1, \$in, '|', \@cmd2, \$out, \$err, IPC::Run::timeout(10))
     or die "$0: $?";
   die "$err" if $err;
 
