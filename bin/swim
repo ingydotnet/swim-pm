@@ -96,8 +96,8 @@ sub to_txt {
   my ($in) = @_;
   my ($out, $err);
 
-  my @cmd1 = ($0, '--to=pod', '--complete=1', '--wrap=1');
-  my @cmd2 = ('pod2text', '--utf8');
+  my @cmd1 = ($0, '--to=pod', '--complete=1');
+  my @cmd2 = ('pod2text');
   IPC::Run::run(\@cmd1, \$in, '|', \@cmd2, \$out, \$err, IPC::Run::timeout(10))
     or die "$0: $?";
   die "$err" if $err;

@@ -1,4 +1,9 @@
 ---
+version: 0.1.7
+date:    Mon Jul  7 22:35:03 PDT 2014
+changes:
+- Don't wrap paragraphs with URLs in them.
+---
 version: 0.1.6
 date:    Mon Jul  7 21:36:35 PDT 2014
 changes:

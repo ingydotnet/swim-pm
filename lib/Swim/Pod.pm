@@ -32,7 +32,12 @@ sub render_para {
     if ($self->option->{'wrap'}) {
         require Text::Autoformat;
         if ($out !~ /^=for /) {
-            $out = Text::Autoformat::autoformat($out, {right => 78});
+            $out = Text::Autoformat::autoformat(
+                $out, {
+                    right => 78,
+                    ignore => qr!\bhttps?://!,
+                }
+            );
         }
         chomp $out;
         return $out;
