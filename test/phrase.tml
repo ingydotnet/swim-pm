@@ -47,10 +47,10 @@ I --don't-- like pie.
 -para
 --- html
 <p>I <del>don&#39;t</del> like pie.</p>
---- XXXmarkdown
-I don't like pie.
---- XXXpod
-I don't like pie.
+--- markdown
+I <del>don't</del> like pie.
+--- pod
+I --don't-- like pie.
 
 === Strong+Emhpasis+Code Phrase
 --- swim

@@ -85,6 +85,12 @@ sub render_emph {
     "_$out\_";
 }
 
+sub render_del {
+    my ($self, $node) = @_;
+    my $out = $self->render($node);
+    "<del>$out</del>";
+}
+
 sub render_code {
     my ($self, $node) = @_;
     my $out = $self->render($node);

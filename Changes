@@ -1,4 +1,9 @@
 ---
+version: 0.1.5
+date:    Mon Jul  7 20:45:10 PDT 2014
+changes:
+- Add --strikethough-- support for Pod and Markdown
+---
 version: 0.1.4
 date:    Sat Jul  5 19:07:18 PDT 2014
 changes:

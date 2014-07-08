@@ -83,6 +83,12 @@ sub render_emph {
     $self->render_phrase(I => $out);
 }
 
+sub render_del {
+    my ($self, $node) = @_;
+    my $out = $self->render($node);
+    "--$out--";
+}
+
 sub render_code {
     my ($self, $node) = @_;
     my $out = $self->render($node);
