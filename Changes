@@ -1,4 +1,9 @@
 ---
+version: 0.1.8
+date:    Mon Jul  7 22:47:50 PDT 2014
+changes:
+- Had to revert 0.1.7 from bug in Text::Autoformat :\
+---
 version: 0.1.7
 date:    Mon Jul  7 22:35:03 PDT 2014
 changes:

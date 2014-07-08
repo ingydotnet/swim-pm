@@ -35,7 +35,8 @@ sub render_para {
             $out = Text::Autoformat::autoformat(
                 $out, {
                     right => 78,
-                    ignore => qr!\bhttps?://!,
+                    # XXX Seems to have a bug where it removes lines after paragraphs.
+                    # ignore => sub { $_ =~ qr!\bhttps?://! },
                 }
             );
         }
