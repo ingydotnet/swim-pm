@@ -10,6 +10,35 @@ use Getopt::Long;
 
 use Getopt::Long;
 
+sub usage {
+  print <<'...';
+Usage:
+
+  swim --to=<format> [<option>...] <file.swim>
+  swim --help
+
+Formats:
+
+  html          # HTML
+  txt           # Plain text
+  md | markdown # Markdown
+  pod           # Pod
+
+  man           # nroff / manpage
+  pdf           # PDF
+  dvi           # DVI
+
+  byte          # Swim Bytecode
+
+Options:
+
+  --wrap=1      # Attempt to wrap output to 80 cols
+  --complete=1  # Add header and footer output as appropriate
+  --pod-upper-head=1  # Convert header1 titles to uppercase
+
+...
+}
+
 my $to = "html";
 my $debug = $ENV{PERL_PEGEX_DEBUG} || 0;
 my %opts = (
@@ -18,6 +47,7 @@ my %opts = (
   'pod-upper-head' => 0,
 );
 my %opt_spec = (
+  "h|help" => \&usage,
   "to=s" => \$to,
   "debug" => \$debug,
   "complete=s" => \&opt,
@@ -36,6 +66,7 @@ sub main {
     pod => 'Swim::Pod',
     byte => 'Swim::Byte',
 
+    txt => \&to_txt,
     man => \&to_man,
     pdf => \&to_pdf,
     dvi => \&to_dvi,
@@ -58,6 +89,20 @@ sub main {
     debug => $debug,
   );
   print $parser->parse($swim);
+}
+
+sub to_txt {
+  require IPC::Run;
+  my ($in) = @_;
+  my ($out, $err);
+
+  my @cmd1 = ($0, '--to=pod', '--complete=1', '--wrap=1');
+  my @cmd2 = ('pod2text', '--utf8');
+  IPC::Run::run(\@cmd1, \$in, '|', \@cmd2, \$out, \$err, IPC::Run::timeout(10))
+    or die "$0: $?";
+  die "$err" if $err;
+
+  print $out;
 }
 
 sub to_man {

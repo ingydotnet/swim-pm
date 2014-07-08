@@ -1,4 +1,11 @@
 ---
+version: 0.1.6
+date:    Mon Jul  7 21:36:35 PDT 2014
+changes:
+- Support .txt output. Formatted plain text.
+- Add usage to `bin/swim`
+- Update doc
+---
 version: 0.1.5
 date:    Mon Jul  7 20:45:10 PDT 2014
 changes:
