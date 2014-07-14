@@ -1,9 +1,10 @@
 Contributing
 ============
 
-Thank you for considering contributing to "Swim".
+The "Swim" Project needs your help!
 
-This file contains instructions that will help you work with the Project.
+Please consider being a contributor. This file contains instructions that will
+help you be an effective contributor to the Project.
 
 GitHub
 ------
@@ -40,5 +41,15 @@ This Project uses Zilla::Dist to prepare it for publishing to CPAN. Read:
 for up-to-date instructions on what contributors like yourself need to know to
 use it.
 
+IRC
+---
 
-Thanks in advance, Ingy döt Net
+Swim has an IRC channel where you can find real people to help you:
+
+  irc.freenode.net#swimtext
+
+Join the channel. Join the team!
+
+
+    Thanks in advance, Ingy döt Net
+
