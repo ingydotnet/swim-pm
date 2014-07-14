@@ -1,0 +1,35 @@
+Contributing
+============
+
+Thank you for considering contributing to "Swim".
+
+This file contains instructions that will help you work with the Project.
+
+== GitHub ==
+
+The code for this distribution is hosted at GitHub. The repository is:
+
+https://github.com/ingydotnet/swim-pm
+
+You can get the code with this command:
+
+  git clone https://github.com/ingydotnet/swim-pm
+
+If you've found a bug or a missing feature that you would like the author to
+know about, report it (or fix it and submit a pull request) here:
+
+https://github.com/ingydotnet/swim-pm/issues/
+
+See these links for help on interacting with GitHub:
+
+* https://help.github.com/
+* https://help.github.com/articles/creating-a-pull-request
+
+== Zilla::Dist ==
+
+This Project uses Zilla::Dist to prepare it for publishing to CPAN. Read
+https://metacpan.org/pod/distribution/Zilla-Dist/lib/Zilla/Dist/Contributing.pod
+for up-to-date instructions on what contributors like yourself need to know to
+use it.
+
+Thanks in advance, Ingy döt Net

@@ -1,4 +1,9 @@
 ---
+version: 0.1.9
+date:    Sun Jul 13 18:24:59 PDT 2014
+changes:
+- Make --help exit (after helping).
+---
 version: 0.1.8
 date:    Mon Jul  7 22:47:50 PDT 2014
 changes:

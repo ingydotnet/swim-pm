@@ -15,7 +15,7 @@ sub usage {
 Usage:
 
   swim --to=<format> [<option>...] <file.swim>
-  swim --help
+  swim -h|--help
 
 Formats:
 
@@ -37,6 +37,7 @@ Options:
   --pod-upper-head=1  # Convert header1 titles to uppercase
 
 ...
+  exit 0
 }
 
 my $to = "html";

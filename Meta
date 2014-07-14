@@ -1,7 +1,7 @@
 =meta: 0.0.1
 
 name: Swim
-version: 0.1.8
+version: 0.1.9
 abstract: See What I Mean?!
 homepage: http://swimtext.org
 
@@ -22,9 +22,9 @@ requires:
   Text::Autoformat: 0
 
 devel:
-  git: git@github.org/ingydotnet/swim-pm
-  irc: irc.freenode.net#swimtext
+  git: https://github.com/ingydotnet/swim-pm
   bug: https://github.com/ingydotnet/swim-pm/issues/
+  irc: irc.freenode.net#swimtext
 
 =cpan:
   include_testml: 1
