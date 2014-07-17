@@ -1,4 +1,9 @@
 ---
+version: 0.1.12
+date:    Thu Jul 17 10:42:42 PDT 2014
+changes:
+- Dep on a fixed Pegex
+---
 version: 0.1.11
 date:    Sun Jul 13 21:15:35 PDT 2014
 changes:
