@@ -10,7 +10,7 @@ use constant start_rules => [
     'block-list-item',
 ];
 
-sub make_tree {
+sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.45)
   {
     '+grammar' => 'swim',
     '+toprule' => 'document',
@@ -81,6 +81,9 @@ sub make_tree {
     'block_list_number' => {
       '.rgx' => qr/\G(\+\ .*\r?\n(?:\+\ .*\r?\n|(?:\ *\r?\n)|\ \ .*\r?\n)*(?:\ *\r?\n)?)/
     },
+    'block_meta' => {
+      '.rgx' => qr/\G\-{3}\r?\n([\s\S]*?\r?\n|)\.{3}\r?\n/
+    },
     'block_para' => {
       '.rgx' => qr/\G((?:(?![\ \*=\#\n]\ ).*\S.*(?:\r?\n|\z))+)(?:\ *\r?\n)?/
     },
@@ -106,6 +109,9 @@ sub make_tree {
         },
         {
           '.ref' => 'block_rule'
+        },
+        {
+          '.ref' => 'block_meta'
         },
         {
           '.ref' => 'block_head'
@@ -280,6 +286,9 @@ sub make_tree {
           '.ref' => 'marker_escape'
         },
         {
+          '.ref' => 'phrase_meta'
+        },
+        {
           '.ref' => 'phrase_func'
         },
         {
@@ -307,6 +316,9 @@ sub make_tree {
           '.ref' => 'marker_next'
         }
       ]
+    },
+    'phrase_meta' => {
+      '.rgx' => qr/\G<\$([^\>]+)\>/
     },
     'phrase_text' => {
       '.rgx' => qr/\G((?:(?![<`\*\/\-\-"\[\\]|https?:)[\s\S])+)/

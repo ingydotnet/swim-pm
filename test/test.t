@@ -66,8 +66,7 @@ sub parse {
 __DATA__
 %TestML 0.1.0
 
-#Diff = 1
-#Plan = 4
+Diff = 1
 
 Label = 'Swim to ByteCode - $BlockLabel'
 *swim.parse('Byte') == *byte
@@ -78,16 +77,17 @@ Label = 'Swim to Markdown - $BlockLabel'
 Label = 'Swim to Pod - $BlockLabel'
 *swim.parse('Pod') == *pod
 
-%Include comment.tml
-%Include para.tml
-%Include pre.tml
-%Include list.tml
-%Include list-data.tml
-%Include head.tml
 %Include block.tml
-%Include phrase.tml
-%Include phrase-func.tml
+%Include bugs.tml
+%Include comment.tml
+%Include edge.tml
+%Include head.tml
 %Include hyper.tml
 %Include link.tml
-%Include edge.tml
-%Include bugs.tml
+%Include list-data.tml
+%Include list.tml
+%Include meta.tml
+%Include para.tml
+%Include phrase-func.tml
+%Include phrase.tml
+%Include pre.tml

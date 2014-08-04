@@ -1,4 +1,11 @@
 ---
+version: 0.1.13
+date:    Mon Aug  4 14:12:24 PDT 2014
+changes:
+- Add support for meta data
+- Both inline and external --meta=file
+- Render with <$varname>
+---
 version: 0.1.12
 date:    Thu Jul 17 10:42:42 PDT 2014
 changes:

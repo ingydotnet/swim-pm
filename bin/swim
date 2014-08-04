@@ -32,6 +32,7 @@ Formats:
 
 Options:
 
+  --meta=<file> # YAML or JSON file containing metadata
   --wrap=1      # Attempt to wrap output to 80 cols
   --complete=1  # Add header and footer output as appropriate
   --pod-upper-head=1  # Convert header1 titles to uppercase
@@ -43,6 +44,7 @@ Options:
 my $to = "html";
 my $debug = $ENV{PERL_PEGEX_DEBUG} || 0;
 my %opts = (
+  'meta' => [],
   'wrap' => 0,
   'complete' => 0,
   'pod-upper-head' => 0,
@@ -52,10 +54,12 @@ my %opt_spec = (
   "to=s" => \$to,
   "debug" => \$debug,
   "complete=s" => \&opt,
+  "meta=s" => \&meta_opt,
   "wrap=s" => \&opt,
   "pod-upper-head=s" => \&opt,
   "pod-cpan" => \&pod_cpan_opts,
 );
+my $meta = {};
 
 sub main {
   GetOptions(%opt_spec) or die "Error in command line arguments";
@@ -86,7 +90,10 @@ sub main {
 
   my $parser = Pegex::Parser->new(
     grammar => 'Swim::Grammar'->new,
-    receiver => $receiver_class->new(option => \%opts),
+    receiver => $receiver_class->new(
+      meta => $meta,
+      option => \%opts,
+    ),
     debug => $debug,
   );
   print $parser->parse($swim);
@@ -158,6 +165,22 @@ sub pod_cpan_opts {
   $opts{complete} = 1;
   $opts{wrap} = 1;
   $opts{'pod-upper-head'} = 1;
+}
+
+sub meta_opt {
+  my ($option, $value) = @_;
+  require YAML::XS;
+  require Hash::Merge;
+  for my $file (split /,/, $value) {
+    my $data = eval {
+        YAML::XS::LoadFile($file);
+    };
+    if ($@) {
+        warn "Swim meta file '$file' failed to load";
+        $data = {};
+    }
+    $meta = Hash::Merge::merge($data, $meta);
+  }
 }
 
 main();

@@ -1,8 +1,9 @@
 use strict;
 package Swim::Tree;
+use Pegex::Base;
+extends 'Pegex::Tree';
 
-use base 'Pegex::Tree';
-# use XXX -with => 'YAML::XS';
+has meta => {};
 
 sub got_block_blank {
     my ($self, $text) = @_;
@@ -22,6 +23,23 @@ sub got_line_comment {
 sub got_block_rule {
     my ($self, $text) = @_;
     $self->add(rule => '');
+}
+
+sub got_block_meta {
+    my ($self, $text) = @_;
+    require YAML::XS;
+    require Hash::Merge;
+    my $meta = eval {
+        YAML::XS::Load($text);
+    };
+    if ($@) {
+        warn "Swim meta section failed to parse";
+        $meta = {};
+    }
+    my $prev = $self->meta;
+    $meta = Hash::Merge::merge($meta, $prev);
+    $self->meta($meta);
+    return;
 }
 
 sub got_block_head {
@@ -105,6 +123,19 @@ sub got_block_para {
     $self->add_parse(para => $text);
 }
 
+sub got_phrase_meta {
+    my ($self, $content) = @_;
+    my $text;
+    if ($content =~ /^(\w+)$/ and defined(my $value = $self->meta->{$1})) {
+        $text = $value;
+    }
+    else {
+        $text = "<\$$content>";
+    }
+    return $text;
+    $self->add(text => $text);
+}
+
 sub got_phrase_func {
     my ($self, $content) = @_;
     +{func => $content};
@@ -184,9 +215,10 @@ sub parse {
         chomp $text;
     }
     my $debug = $self->{parser}{debug} || undef;
+    my $receiver = 'Swim::Tree'->new(meta => $self->meta);
     my $parser = Pegex::Parser->new(
         grammar => 'Swim::Grammar'->new(start => $start),
-        receiver => 'Swim::Tree'->new,
+        receiver => $receiver,
         debug => $debug,
     );
     $parser->parse($text, $start);

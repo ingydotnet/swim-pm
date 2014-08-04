@@ -1,9 +1,7 @@
 use strict;
 package Swim::Pod;
-
-use base 'Swim::Markup';
-
-# use XXX -with => 'YAML::XS';
+use Pegex::Base;
+extends 'Swim::Markup';
 
 use constant top_block_separator => "\n";
 

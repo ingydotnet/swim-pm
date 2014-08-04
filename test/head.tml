@@ -1,7 +1,7 @@
 === Name / Abstract Title
 --- swim
 New::Black
-\==========
+==========
 
 Is Still Black
 
@@ -23,7 +23,7 @@ Back in black, hit the sack.
 -para
 --- markdown
 New::Black
-\==========
+==========
 
 Is Still Black
 
@@ -42,7 +42,7 @@ Back in black, hit the sack.
 === Title and Paragraph
 --- swim
 My Title
-\========
+========
 
 O HAI
 FREND
@@ -59,7 +59,7 @@ FREND
 <p>O HAI FREND</p>
 --- markdown
 My Title
-\========
+========
 
 O HAI FREND
 
@@ -78,7 +78,7 @@ Multi Line
 
 Paragraph text
 
-\==== Level 4 Header
+==== Level 4 Header
   preformatted text
 --- byte
 +head2
@@ -140,7 +140,7 @@ Paragraph text
 === Markup in Title
 --- swim
 `Foo`
-\=====
+=====
 
 The *New* Foo
 

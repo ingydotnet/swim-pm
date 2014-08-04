@@ -8,7 +8,7 @@ See http://github.com/ingydotnet/swim-pm#readme
 
 =head1 NAME
 
-swim - See What I Mean?!
+Swim - <$abstract>
 
 =for html
 <a href="https://travis-ci.org/ingydotnet/swim-pm"><img src="https://travis-ci.org/ingydotnet/swim-pm.png" alt="swim-pm"></a>

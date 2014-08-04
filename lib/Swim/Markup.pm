@@ -1,9 +1,7 @@
 use strict;
 package Swim::Markup;
-
 use Pegex::Base;
-use base 'Swim::Tree';
-# use XXX -with => 'YAML::XS';
+extends 'Swim::Tree';
 
 has option => {};
 
