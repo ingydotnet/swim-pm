@@ -23,9 +23,11 @@ install:
   git://github.com/ingydotnet/pegex-pm ../pegex-pm
 - cpanm --quiet --notest
   Devel::Cover::Report::Coveralls
+  Hash::Merge
   HTML::Escape
   Pegex
   Text::Autoformat
+  YAML::XS
 
 script:
 - PERL5OPT=-MDevel::Cover=-coverage,statement,branch,condition,path,subroutine

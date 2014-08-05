@@ -1,4 +1,10 @@
 ---
+version: 0.1.14
+date:    Mon Aug  4 23:05:57 PDT 2014
+changes:
+- Refactor YAML loading into Swim::Util
+- Add prereqs Hash::Merge and YAML::XS to Meta
+---
 version: 0.1.13
 date:    Mon Aug  4 14:12:24 PDT 2014
 changes:

@@ -27,18 +27,8 @@ sub got_block_rule {
 
 sub got_block_meta {
     my ($self, $text) = @_;
-    require YAML::XS;
-    require Hash::Merge;
-    my $meta = eval {
-        YAML::XS::Load($text);
-    };
-    if ($@) {
-        warn "Swim meta section failed to parse";
-        $meta = {};
-    }
-    my $prev = $self->meta;
-    $meta = Hash::Merge::merge($meta, $prev);
-    $self->meta($meta);
+    require Swim::Util;
+    $self->{meta} = Swim::Util->merge_meta($self->meta, $text);
     return;
 }
 

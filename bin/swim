@@ -169,17 +169,10 @@ sub pod_cpan_opts {
 
 sub meta_opt {
   my ($option, $value) = @_;
-  require YAML::XS;
-  require Hash::Merge;
+  require Swim::Util;
   for my $file (split /,/, $value) {
-    my $data = eval {
-        YAML::XS::LoadFile($file);
-    };
-    if ($@) {
-        warn "Swim meta file '$file' failed to load";
-        $data = {};
-    }
-    $meta = Hash::Merge::merge($data, $meta);
+    my $yaml = Swim::Util->slurp($file);
+    $meta = Swim::Util->merge_meta($meta, $yaml);
   }
 }
 

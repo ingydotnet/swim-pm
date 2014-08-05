@@ -1,7 +1,7 @@
 =meta: 0.0.1
 
 name: Swim
-version: 0.1.13
+version: 0.1.14
 abstract: See What I Mean?!
 homepage: http://swimtext.org
 
@@ -17,9 +17,11 @@ author:
 
 requires:
   perl: 5.8.1
-  Pegex: 0.41
+  Hash::Merge: 0
   HTML::Escape: 0
+  Pegex: 0.41
   Text::Autoformat: 0
+  YAML::XS: 0
 
 devel:
   git: https://github.com/ingydotnet/swim-pm
