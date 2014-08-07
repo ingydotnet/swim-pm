@@ -1,4 +1,9 @@
 ---
+version: 0.1.15
+date:    Thu Aug  7 00:19:12 PDT 2014
+changes:
+- Fix unicode issues
+---
 version: 0.1.14
 date:    Mon Aug  4 23:05:57 PDT 2014
 changes:

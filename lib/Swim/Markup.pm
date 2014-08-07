@@ -4,6 +4,7 @@ use Pegex::Base;
 extends 'Swim::Tree';
 
 has option => {};
+use Devel::Peek;
 
 use constant top_block_separator => '';
 

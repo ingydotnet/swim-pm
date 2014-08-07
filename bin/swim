@@ -62,6 +62,7 @@ my %opt_spec = (
 my $meta = {};
 
 sub main {
+  binmode(STDOUT, ':utf8');
   GetOptions(%opt_spec) or die "Error in command line arguments";
 
   my $format_mapping = {
@@ -79,7 +80,8 @@ sub main {
 
   my $format = $format_mapping->{$to}
     or die "Unknown output format '$to'";
-  my $swim = do {local $/; <>};
+
+  my $swim = slurp(@ARGV);
   if (ref $format) {
     $format->($swim);
     return;
@@ -174,6 +176,24 @@ sub meta_opt {
     my $yaml = Swim::Util->slurp($file);
     $meta = Swim::Util->merge_meta($meta, $yaml);
   }
+}
+
+sub slurp {
+  my ($file) = @_;
+  local $/;
+  my $swim;
+  if (defined $file) {
+    open IN, $file
+      or die "Can't open '$file' for input";
+    binmode(IN, ':encoding(UTF-8)');
+    $swim = <IN>;
+    close IN;
+  }
+  else {
+    binmode(STDIN, ':encoding(UTF-8)');
+    $swim = <STDIN>;
+  }
+  return $swim;
 }
 
 main();
