@@ -1,4 +1,9 @@
 ---
+version: 0.1.16
+date:    Wed Aug 13 16:35:02 PDT 2014
+changes:
+- Headers now can have phrase markup
+---
 version: 0.1.15
 date:    Thu Aug  7 00:19:12 PDT 2014
 changes:

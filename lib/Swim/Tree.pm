@@ -38,7 +38,7 @@ sub got_block_head {
     my ($text) = grep defined, @$got;
     chomp $text;
     my $level = length $marker;
-    $self->add("head$level" => $text);
+    $self->add_parse("head$level" => $text);
 }
 
 sub got_block_pref {

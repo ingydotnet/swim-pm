@@ -1,4 +1,4 @@
-=== Name / Abstract Title
+=== Name/Abstract Title
 --- swim
 New::Black
 ==========
@@ -151,3 +151,9 @@ Start
 C<Foo> - The B<New> Foo
 
 Start
+
+=== Markup in Header
+--- swim
+= This /and/ That
+--- html
+<h1>This <em>and</em> That</h1>
