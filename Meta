@@ -1,7 +1,7 @@
 =meta: 0.0.2
 
 name: Swim
-version: 0.1.19
+version: 0.1.20
 abstract: See What I Mean?!
 homepage: http://swimtext.org
 language: perl
@@ -31,6 +31,3 @@ requires:
 
 =zild:
   include_testml: 1
-
-=travis:
-  testml: yes
