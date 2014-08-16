@@ -1,4 +1,3 @@
-use strict;
 package Swim::Pod;
 use Pegex::Base;
 extends 'Swim::Markup';

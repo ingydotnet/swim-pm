@@ -1,4 +1,3 @@
-use strict;
 package Swim::Tree;
 use Pegex::Base;
 extends 'Pegex::Tree';

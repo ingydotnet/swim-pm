@@ -1,3 +1,4 @@
+use strict; use warnings;
 package Swim::Grammar;
 
 use base 'Pegex::Grammar';

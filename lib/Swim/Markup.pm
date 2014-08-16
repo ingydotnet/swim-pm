@@ -1,4 +1,3 @@
-use strict;
 package Swim::Markup;
 use Pegex::Base;
 extends 'Swim::Tree';

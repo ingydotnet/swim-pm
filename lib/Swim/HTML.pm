@@ -1,4 +1,4 @@
-use strict;
+use strict; use warnings;
 package Swim::HTML;
 
 use base 'Swim::Markup';
