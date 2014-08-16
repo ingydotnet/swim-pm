@@ -1,4 +1,9 @@
 ---
+version: 0.1.22
+date:    Sat Aug 16 16:57:38 PDT 2014
+changes:
+- Change ' / ' to '/' in doc
+---
 version: 0.1.21
 date:    Sat Aug 16 16:14:14 PDT 2014
 changes:

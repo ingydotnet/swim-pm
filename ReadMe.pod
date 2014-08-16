@@ -178,10 +178,10 @@ blocks inside blocks in a way that is not available in most markups.
 
 =head2 Swim Syntax
 
-There are 4 sets of syntax to define: block / implicit, phrase / implicit,
-block / explicit and phrase / explicit. There are also escaping mechanisms.
+There are 4 sets of syntax to define: block/implicit, phrase/implicit,
+block/explicit and phrase/explicit. There are also escaping mechanisms.
 
-=head3 Block / Implicit Syntaxes
+=head3 Block/Implicit Syntaxes
 
 A paragraph is a set of contiguous set of plain text lines. It is terminated
 by a blank line or by another block syntax at that level.
