@@ -1,8 +1,13 @@
 ---
+version: 0.1.18
+date:    Fri Aug 15 20:46:57 PDT 2014
+changes:
+- Fix bad Changes entry
+---
 version: 0.1.17
 date:    Fri Aug 15 20:44:07 PDT 2014
 changes:
-- Switch hashbang to '#!/usr/bin/env perl'
+- Add t/000-compile-modules.t
 ---
 version: 0.1.16
 date:    Wed Aug 13 16:35:02 PDT 2014
