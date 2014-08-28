@@ -173,4 +173,9 @@ $out
 ...
 }
 
+sub phrase_func_image {
+    my ($self, $args) = @_;
+    sprintf qq{=for html\n<p><img src="%s" /></p>\n\n}, $args;
+}
+
 1;
