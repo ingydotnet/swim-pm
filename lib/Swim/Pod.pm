@@ -138,6 +138,24 @@ sub render_item {
     $out;
 }
 
+sub render_olist {
+    my ($self, $node) = @_;
+    my $number = $self->{number} ||=[];
+    push @$number, 1;
+    my $out = $self->render($node);
+    pop @$number;
+    "=over\n\n$out=back\n";
+}
+
+sub render_oitem {
+    my ($self, $node) = @_;
+    my $item = shift @$node;
+    my $out = "=item $self->{number}[-1].\n\n" . $self->render($item) . "\n\n";
+    $self->{number}[-1]++;
+    $out .= $self->render($node) . "\n" if @$node;
+    $out;
+}
+
 sub render_data {
     my ($self, $node) = @_;
     my $out = "=over\n\n";

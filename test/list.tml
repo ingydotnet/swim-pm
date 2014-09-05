@@ -115,3 +115,36 @@ Foo is ok
 Bar is too far
 
 =back
+
+=== Numbered List
+--- swim
++ one
+
+  + one point one
+  + one point two
+
++ two
+--- pod
+=over
+
+=item 1.
+
+one
+
+=over
+
+=item 1.
+
+one point one
+
+=item 2.
+
+one point two
+
+=back
+
+=item 2.
+
+two
+
+=back

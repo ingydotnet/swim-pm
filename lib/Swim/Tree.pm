@@ -63,6 +63,22 @@ sub got_block_list_bullet {
     +{ list => $items };
 }
 
+sub got_block_list_number {
+    my ($self, $text) = @_;
+    my @items = map {s/^  //gm; $_} split /^\+\ /m, $text;
+    shift @items;
+    my $items = [
+        map {
+            my $item = $self->add_parse(oitem => $_, 'block-list-item');
+            if ($item->{oitem}[0]{para}) {
+                $item->{oitem}[0] = $item->{oitem}[0]{para};
+            }
+            $item;
+        } @items
+    ];
+    +{ olist => $items };
+}
+
 sub got_block_list_data {
     my ($self, $text) = @_;
     my @items = map {s/^  //gm; $_} split /^\-\ /m, $text;

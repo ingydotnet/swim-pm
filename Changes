@@ -1,4 +1,10 @@
 ---
+version: 0.1.24
+date:    Fri Sep  5 06:45:36 UTC 2014
+changes:
+- Add support for numbered lists
+- And nested! (davido++)
+---
 version: 0.1.23
 date:    Thu Aug 28 11:11:30 PDT 2014
 changes:
