@@ -1,2 +1,2 @@
 package Swim;
-our $VERSION = '0.1.25';
+our $VERSION = '0.1.26';

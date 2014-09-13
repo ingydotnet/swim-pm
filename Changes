@@ -1,4 +1,9 @@
 ---
+version: 0.1.26
+date:    Sat Sep 13 02:09:40 PDT 2014
+changes:
+- Account for all phrases in Pod
+---
 version: 0.1.25
 date:    Sat Sep 13 02:00:32 PDT 2014
 changes:

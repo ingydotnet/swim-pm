@@ -71,6 +71,7 @@ Here are a few points:
 
 Swim aims to be a feature superset of the other markups since it converts to
 all of them.
+
 Most of the other markups don't support things like multiple paragraphs in a
 bullet point (like you are reading right now!).
 
@@ -87,6 +88,7 @@ Swim is easy to extend at many levels. You can add new backend formats. You
 can also define your own markup syntaxes. You can even define sections that
 parse using a different syntax grammar. For instance, you could inline a
 markdown section like this:
+
     <<< markdown
     This is [Markdown](http://daringfireball.net/projects/markdown/) text.
     >>>

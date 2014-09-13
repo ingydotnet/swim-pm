@@ -2,7 +2,17 @@ package Swim::Pod;
 use Pegex::Base;
 extends 'Swim::Markup';
 
-my $phrase_types = { map { ($_, 1) } qw(bold emph del code) };
+my $phrase_types = {
+    map { ($_, 1) } qw(
+        bold
+        emph
+        del
+        code
+        hyper
+        link
+        func
+        text
+    ) };
 sub node_is_block {
     my ($self, $node) = @_;
     my ($type) = keys %$node;
