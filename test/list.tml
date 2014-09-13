@@ -149,14 +149,13 @@ two
 
 =back
 
-=== Nested List Bug
---- ONLY
+=== Block in block spacing bug
 --- swim
 + foo
 
   bar
 
-  * xyz
+  baz
 --- pod
 =over
 
@@ -166,10 +165,6 @@ foo
 
 bar
 
-=over
-
-=item * xyz
-
-=back
+baz
 
 =back

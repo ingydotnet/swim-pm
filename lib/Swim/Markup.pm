@@ -3,9 +3,6 @@ use Pegex::Base;
 extends 'Swim::Tree';
 
 has option => {};
-use Devel::Peek;
-
-use constant top_block_separator => '';
 
 sub BUILD {
     $_[0]->{option} ||= {};
@@ -34,8 +31,7 @@ sub render {
         $out = $self->render_node($node);
     }
     else {
-        $separator ||=
-            $self->at_top_level ? $self->top_block_separator : '';
+        $separator ||= $self->get_separator($node);
         $out = join $separator, grep $_, map { $self->render($_) } @$node;
     }
     return $out;
@@ -69,6 +65,14 @@ sub render_func {
         }
     }
     "<$node>";
+}
+
+use constant node_is_block => 0;
+use constant top_block_separator => '';
+
+sub get_separator {
+    my ($self, $node) = @_;
+    $self->at_top_level ? $self->top_block_separator : '';
 }
 
 sub at_top_level {

@@ -2,7 +2,18 @@ package Swim::Pod;
 use Pegex::Base;
 extends 'Swim::Markup';
 
-use constant top_block_separator => "\n";
+my $phrase_types = { map { ($_, 1) } qw(bold emph del code) };
+sub node_is_block {
+    my ($self, $node) = @_;
+    my ($type) = keys %$node;
+    return($phrase_types->{$type} ? 0 : 1);
+}
+sub get_separator {
+    my ($self, $node) = @_;
+    $node = $node->[0] while ref($node) eq 'ARRAY';
+    return '' unless ref $node;
+    $self->node_is_block($node) ? "\n" : '';
+}
 
 sub render_text {
     my ($self, $text) = @_;
@@ -127,14 +138,14 @@ sub render_phrase {
 sub render_list {
     my ($self, $node) = @_;
     my $out = $self->render($node);
-    "=over\n\n$out=back\n";
+    "=over\n\n$out\n=back\n";
 }
 
 sub render_item {
     my ($self, $node) = @_;
     my $item = shift @$node;
-    my $out = "=item * " . $self->render($item) . "\n\n";
-    $out .= $self->render($node) . "\n" if @$node;
+    my $out = "=item * " . $self->render($item) . "\n";
+    $out .= "\n" . $self->render($node) if @$node;
     $out;
 }
 
@@ -144,15 +155,15 @@ sub render_olist {
     push @$number, 1;
     my $out = $self->render($node);
     pop @$number;
-    "=over\n\n$out=back\n";
+    "=over\n\n$out\n=back\n";
 }
 
 sub render_oitem {
     my ($self, $node) = @_;
     my $item = shift @$node;
-    my $out = "=item $self->{number}[-1].\n\n" . $self->render($item) . "\n\n";
+    my $out = "=item $self->{number}[-1].\n\n" . $self->render($item) . "\n";
     $self->{number}[-1]++;
-    $out .= $self->render($node) . "\n" if @$node;
+    $out .= "\n" . $self->render($node) if @$node;
     $out;
 }
 
