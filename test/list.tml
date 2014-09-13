@@ -148,3 +148,28 @@ one point two
 two
 
 =back
+
+=== Nested List Bug
+--- ONLY
+--- swim
++ foo
+
+  bar
+
+  * xyz
+--- pod
+=over
+
+=item 1.
+
+foo
+
+bar
+
+=over
+
+=item * xyz
+
+=back
+
+=back
