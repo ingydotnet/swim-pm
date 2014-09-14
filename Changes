@@ -1,4 +1,9 @@
 ---
+version: 0.1.27
+date:    Sat Sep 13 19:23:45 PDT 2014
+changes:
+- Add Swim VERSION to Pod headers
+---
 version: 0.1.26
 date:    Sat Sep 13 02:09:40 PDT 2014
 changes:
