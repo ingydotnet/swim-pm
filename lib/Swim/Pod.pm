@@ -2,22 +2,6 @@ package Swim::Pod;
 use Pegex::Base;
 extends 'Swim::Markup';
 
-my $phrase_types = {
-    map { ($_, 1) } qw(
-        bold
-        emph
-        del
-        code
-        hyper
-        link
-        func
-        text
-    ) };
-sub node_is_block {
-    my ($self, $node) = @_;
-    my ($type) = keys %$node;
-    return($phrase_types->{$type} ? 0 : 1);
-}
 sub get_separator {
     my ($self, $node) = @_;
     $node = $node->[0] while ref($node) eq 'ARRAY';
@@ -53,7 +37,8 @@ sub render_para {
             $out = Text::Autoformat::autoformat(
                 $out, {
                     right => 78,
-                    # XXX Seems to have a bug where it removes lines after paragraphs.
+                    # XXX Seems to have a bug where it removes lines after
+                    # paragraphs:
                     # ignore => sub { $_ =~ qr!\bhttps?://! },
                 }
             );
@@ -188,7 +173,7 @@ sub render_data {
             $out .= $self->render($def) . "\n\n";
         }
         if ($rest) {
-            $out .= $self->render($rest, "\n") . "\n";
+            $out .= $self->render($rest) . "\n";
         }
     }
     $out . "=back\n";

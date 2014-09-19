@@ -22,7 +22,7 @@ sub final {
 }
 
 sub render {
-    my ($self, $node, $separator) = @_;
+    my ($self, $node) = @_;
     my $out;
     if (not ref $node) {
         $out = $self->render_text($node);
@@ -31,7 +31,7 @@ sub render {
         $out = $self->render_node($node);
     }
     else {
-        $separator ||= $self->get_separator($node);
+        my $separator = $self->get_separator($node);
         $out = join $separator, grep $_, map { $self->render($_) } @$node;
     }
     return $out;
@@ -67,16 +67,37 @@ sub render_func {
     "<$node>";
 }
 
-use constant node_is_block => 0;
+my $phrase_types = {
+    map { ($_, 1) } qw(
+        bold
+        emph
+        del
+        code
+        hyper
+        link
+        func
+        text
+    ) };
+
+#------------------------------------------------------------------------------
+# Separator controls
+#------------------------------------------------------------------------------
+use constant default_separator => '';
 use constant top_block_separator => '';
 
 sub get_separator {
     my ($self, $node) = @_;
-    $self->at_top_level ? $self->top_block_separator : '';
+    $self->at_top_level ? $self->top_block_separator : $self->default_separator;
 }
 
 sub at_top_level {
     @{$_[0]->{stack}} == 0
+}
+
+sub node_is_block {
+    my ($self, $node) = @_;
+    my ($type) = keys %$node;
+    return($phrase_types->{$type} ? 0 : 1);
 }
 
 1;
