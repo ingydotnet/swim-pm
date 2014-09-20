@@ -38,6 +38,14 @@ New::Black - Is Still Black
 =head1 Synopsis
 
 Back in black, hit the sack.
+--- html
+<h1 class="title">New::Black</h1>
+
+<p>Is Still Black</p>
+
+<h1>Synopsis</h1>
+
+<p>Back in black, hit the sack.</p>
 
 === Title and Paragraph
 --- swim

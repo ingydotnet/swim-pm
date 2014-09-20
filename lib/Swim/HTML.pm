@@ -1,8 +1,6 @@
-use strict; use warnings;
 package Swim::HTML;
-
-use base 'Swim::Markup';
-use XXX;
+use Pegex::Base;
+extends 'Swim::Markup';
 
 use HTML::Escape;
 
@@ -77,12 +75,13 @@ sub render_func {
 
 sub render_title {
     my ($self, $node) = @_;
-    my $out = $self->render($node);
-    chomp $out;
-    my ($name, $text) = ref $node ? @$node : (undef, $node);
-    if (defined $text) {
-        $document_title = "$name - $text";
-        "<h1 class=\"title\">$name</h1>\n\n<p>$text</p>\n";
+    my ($name, $abstract) = ref $node ? @$node : (undef, $node);
+
+    $name = $self->render($name);
+    if (defined $abstract) {
+        $abstract = $self->render($abstract);
+        $document_title = "$name - $abstract";
+        "<h1 class=\"title\">$name</h1>\n\n<p>$abstract</p>\n";
     }
     else {
         $document_title = "$name";
