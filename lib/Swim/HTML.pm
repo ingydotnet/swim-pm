@@ -2,7 +2,7 @@ use strict; use warnings;
 package Swim::HTML;
 
 use base 'Swim::Markup';
-# use XXX -with => 'YAML::XS';
+use XXX;
 
 use HTML::Escape;
 
@@ -131,6 +131,12 @@ sub render_del {
     my ($self, $node) = @_;
     my $out = $self->render($node);
     "<del>$out</del>";
+}
+
+sub render_under {
+    my ($self, $node) = @_;
+    my $out = $self->render($node);
+    "<u>$out</u>";
 }
 
 sub render_hyper {

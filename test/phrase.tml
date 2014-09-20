@@ -117,3 +117,18 @@ I tried left-, right- and middle-clicking.
 --x--
 --- html
 <p><del>x</del></p>
+
+=== Underline Markup
+--- swim
+I _LOVE_ NY!
+--- byte
++para
+ I 
++under
+ LOVE
+-under
+  NY!
+-para
+--- html
+<p>I <u>LOVE</u> NY!</p>
+

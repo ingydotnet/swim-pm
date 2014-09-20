@@ -1,7 +1,10 @@
+BEGIN { $ENV{PERL_PEGEX_AUTO_COMPILE} = 'Swim::Grammar'; }
+
 use strict; use warnings;
 package Swim::Grammar;
+use Pegex::Base;
 
-use base 'Pegex::Grammar';
+extends 'Pegex::Grammar';
 
 use constant file => '../swim-pgx/swim.pgx';
 
@@ -11,7 +14,7 @@ use constant start_rules => [
     'block-list-item',
 ];
 
-sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.45)
+sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.55)
   {
     '+grammar' => 'swim',
     '+toprule' => 'document',
@@ -322,7 +325,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.45)
       '.rgx' => qr/\G<\$([^\>]+)\>/
     },
     'phrase_text' => {
-      '.rgx' => qr/\G((?:(?![<`\*\/\-\-"\[\\]|https?:)[\s\S])+)/
+      '.rgx' => qr/\G((?:(?![<`\*\/\-\-_"\[\\]|https?:)[\s\S])+)/
     },
     'phrase_under' => {
       '.all' => [

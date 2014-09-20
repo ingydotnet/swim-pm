@@ -166,6 +166,11 @@ sub got_phrase_del {
     $self->add(del => $content);
 }
 
+sub got_phrase_under {
+    my ($self, $content) = @_;
+    $self->add(under => $content);
+}
+
 sub got_phrase_hyper_named {
     my ($self, $content) = @_;
     my ($text, $link) = @$content;

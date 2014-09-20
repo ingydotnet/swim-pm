@@ -69,10 +69,11 @@ sub render_func {
 
 my $phrase_types = {
     map { ($_, 1) } qw(
+        code
         bold
         emph
         del
-        code
+        under
         hyper
         link
         func
