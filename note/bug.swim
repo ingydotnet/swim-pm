@@ -1,0 +1,230 @@
+= Inline Module Spec
+
+How Inline Can be used in place of XS for CPAN
+
+= Overview
+
+This is a specification of how Inline.pm will be made to be the easy (and
+hopefully preferred) method of writing "extension" ("XS") modules for Perl 5.
+
+People who extend Perl 5 code with `Inline`, `Inline::C` and `Inline::CPP`,
+should be able to use the same techniques to ship code as modules for CPAN,
+with as little extra effort as possible.
+
+In October 2014, The Perl Foundation (TPF) accepted a grant from CPAN authors
+Ingy döt Net and David Oswald, to do just that.
+
+= Basics
+
+Here is a trivial Perl program/script that uses Inline:
+
+  use Inline C => "int add(int a, int b) {return a + b;}
+  print "2 + 2 = ", add(2, 2), "\n";
+
+It should be possible to turn that into an /extension/ module that looks like
+this:
+
+  package Acme::Math::XS;
+  use strict;
+  use warnings;
+  our $VERSION = '0.0.1';
+  use Exporter 'import';
+  our @EXPORT = qw( add );
+  use Inline C => "int add(int a, int b) {return a + b;}
+  1;
+
+Usage:
+
+  use Acme::Math::XS;
+  print "2 + 2 = ", add(2, 2), "\n";
+
+We a CPAN user installs this, the result should be very close to the same as
+if they had used XS.
+
+Currently this doesn't work well, because the Inline builds (compiles) things
+on the first runtime, and it doesn't save the compilation units into the
+standard (CPAN install) places. We want to let Inline know that it is building
+for permanent installation, and also we want to trigger it during the normal
+`make` phase.
+
+= Environmental Concerns
+
+Inline-style modules have a few concerns that must be addressed by this
+project. In Perl, TMTOWTDI! Inline modules must work under different module
+distribution frameworks, various extension coding styles, must support
+multiple extension languages, and must DTRT in several different runtime
+scenarios.
+
+== Module Building Environments
+
+Inline modules will be made to work easily under these popular setups:
+
+- `ExtUtils::MakeMaker`
+
+  ie the old style `Makefile.PL` setup.
+
+- `Module::Build`
+
+  The pure Perl way to distribute modules.
+
+- `Module::Install`
+
+  This style is somewhat dated, but possibly the easiest to support.
+
+- `Dist::Zilla`
+
+  The popular new way.
+
+- `Zilla::Dist`
+
+  Ingy's new abstraction over `Dist::Zilla`.
+
+- `Distar`
+
+  mst's distribution style.
+
+== Extension Styles
+
+When people write XS module, there are a few different common use cases.
+
+- True /inline/ functional
+
+  This is when you just want some hot subroutines to be written in a faster
+  language for performance gains. The C code can stay inside the (mostly) Perl
+  module.
+
+- All (or mostly) C code
+
+  Some XS modules are almost entirely C or C++ code made to work in Perl. In
+  this case the code almost certainly lives in external files (not Inline).
+  `Inline.pm` can still be used to make life easier.
+
+- Library binding modules
+
+  Often XS is used to bind a popular C library to Perl. Like `YAML::XS`
+  binding `libyaml` to Perl.
+
+- Mix and match
+
+  The above styles can be used in any combination.
+
+== Extension Languages
+
+The grant calls calls for support of C and C++, and certainly those are the
+most common ways to do this kind of thing. However, the Inline framework will
+be setup in such a way that it will be (at least theoretically) possible to
+use and Inline language support module (ILSM), given that the author adds the
+new API parts.
+
+== Runtime Scenarios
+
+When developing Perl modules (and running their tests) there are several
+distinct runtime scenarios, and Inline modules must Do The Right Things at the
+right times.
+
+- `prove -lbv t`
+
+  ie basic development testing. C/C++ code must compile when changed and prior
+  to being run. This should not require the developer to think about it.
+
+  Note: this should be a clear win over XS, where `perl Makefile.PL && make`
+  must be done after every XS change.
+
+- Distribution testing
+
+  The final tests run in a simulated install environment before creating a
+  distribution tarball to CPAN. ie `dzil test`.
+
+- Pre-dist-build
+
+  Certain things must happen to the code to prepare it for distribution.
+
+- User side build
+
+  When the user who is installing the distribution, executes the /build/
+  phase, the correct things must happen so that the proper things get into
+  blib after being compiled to work on that particular machine/environment.
+
+- User side testing
+
+  Before installation, the code is tested and must behave correctly.
+
+- Final end-user runtime
+
+  aka Production. The code must run indistinguishable from an XS module.
+
+This might seems like a lot of scenarios with some of them being duplicates,
+but we really think that each of them are slightly different. They should all
+at least be considered and tested.
+
+= Inline::Module Implementation
+
+The rest of the spec talks about what Inline must do to accomplish these
+tasks. This is very speculative at this point, and is expected to change
+during early development.
+
+== Author-side Responsibilities
+
+A person who has used Inline::C and now wants to ship it to CPAN as an /XS/
+module has to change a few things. Let's continue with the `Acme::Math::XS`
+example.
+
+The first thing to do is change `use Inline` to `use Acme::Math::XS::Inline`.
+In other words, they change this:
+
+  use Inline C => …
+
+to this:
+
+  use Acme::Math::XS::Inline C => …
+
+The author will ship `Acme::Math::XS::Inline` as part of the distribution, but
+this module will not be hand-written by them. This is how the magic happens.
+
+The author needs to run this command one time:
+
+  perl-inline-module
+
+This will create a file: `lib/Acme/Math/XS/Inline.pm`. This module is smart
+enough to keep everything during the development phase up to date.
+
+The author must also add one or two lines to the dist framework control file
+(ie `Makefile.PL`, `Build.pl`, `dist.ini`, `Meta`, etc) that tells the build
+system that special things must happen at special times. This line will differ
+per dist system, but effectively will look like:
+
+  perl-inline-module
+
+After that, everything should just work. The author can code, change and ship
+C or C++ code in the same manner as a pure Perl module.
+
+== How it Works
+
+The basic (strawman) idea is this: the special module called
+`Acme::Math::XS::Inline` has 3 completely different forms at three different
+points in time:
+
+- Development Form (`lib/Foo/Inline.pm`)
+
+  When you run `perl-inline-module`, it loads all the modules under lib, and
+  intercepts the `use Foo::Inline` statements, and generates the
+  `lib/Foo/Inline.pm` modules. This ends up being a proxy module to
+  `Inline.pm` but with some module configuration changes. ie Stuff gets built
+  automatically into `blib` (and rebuilt when C code changes).
+
+- User Build Form (`inc/Foo/Inline.pm`)
+
+  This is a special "build" time module that runs during installation, and
+  /shadows/ the real (to be installed) module. It builds the extension libary
+  into blib.
+
+- Production/Installed Form (`Foo-0.0.1/lib/Foo/Inline.pm`)
+
+  This little shim is what gets installed during a `make install`. It is just
+  a little wrapper around `DynaLoader`. It never builds code; just loads
+  installed code.
+
+= Inline::Module Development Strategy
+
+Our first task is to prototype this setup using a new toy module:
+`Acme::Math::XS`. Then we adjust the spec based on our findings.

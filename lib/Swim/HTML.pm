@@ -53,6 +53,39 @@ sub render_item {
     "<li>$out$spacer</li>\n";
 }
 
+sub render_olist {
+    my ($self, $node) = @_;
+    my $out = $self->render($node);
+    chomp $out;
+    "<ol>\n$out\n</ol>\n";
+}
+
+sub render_oitem {
+    my ($self, $node) = @_;
+    $self->render_item($node);
+}
+
+sub render_data {
+    my ($self, $node) = @_;
+    my $out = "<dl>\n";
+    for my $item (@$node) {
+        my ($term, $def, $rest) = @$item;
+        $term = $self->render($term);
+        $out .= "<dt>$term</dt>\n";
+        if (length $def or $rest) {
+            $out .= "<dd>";
+            if (length $def) {
+                $out .= $self->render($def) . "\n";
+            }
+            if ($rest) {
+                $out .= $self->render($rest) . "\n";
+            }
+            $out .= "<dd>\n";
+        }
+    }
+    $out . "</dl>\n";
+}
+
 sub render_pref {
     my ($self, $node) = @_;
     my $out = escape_html($node);
