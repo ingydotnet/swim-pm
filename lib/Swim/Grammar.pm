@@ -1,5 +1,3 @@
-BEGIN { $ENV{PERL_PEGEX_AUTO_COMPILE} = 'Swim::Grammar'; }
-
 use strict; use warnings;
 package Swim::Grammar;
 use Pegex::Base;
