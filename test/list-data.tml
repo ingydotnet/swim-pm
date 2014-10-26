@@ -42,6 +42,29 @@ No definition, just a paragraph
 =back
 
 =back
+--- html
+<dl>
+<dt>term one</dt>
+<dd>Definition 1 is <em>just</em> a line
+<dd>
+<dt><code>term 2</code></dt>
+<dd>Definition 2
+<p>Followed by a paragraph</p>
+
+<dd>
+<dt>Term</dt>
+<dd><p>No definition, just a paragraph</p>
+
+<dd>
+<dt>Final</dt>
+<dd><ul>
+<li>No definition</li>
+<li>Just</li>
+<li>a list</li>
+</ul>
+
+<dd>
+</dl>
 
 === Multi-level item
 --- swim
@@ -58,3 +81,12 @@ No definition, just a paragraph
 See?
 
 =back
+--- html
+<dl>
+<dt>this</dt>
+<dd><pre><code>$a = $b
+</code></pre>
+<p>See?</p>
+
+<dd>
+</dl>

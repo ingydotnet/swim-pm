@@ -98,6 +98,12 @@ sub render_del {
     "--$out--";
 }
 
+sub render_under {
+    my ($self, $node) = @_;
+    my $out = $self->render($node);
+    "_${out}_";
+}
+
 sub render_code {
     my ($self, $node) = @_;
     my $out = $self->render($node);
