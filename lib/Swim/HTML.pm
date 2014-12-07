@@ -182,11 +182,13 @@ sub render_link {
     my ($self, $node) = @_;
     my ($link, $text) = @{$node}{qw(link text)};
     $text = $link if not length $text;
-    if ($ENV{SWIM_LINK_FORMAT_HACK} eq 'metacpan') {
-        $link = $text;
-        $link =~ s/::/-/g;
-        $link = "https://metacpan.org/release/$link";
+
+    # XXX Temporary hack for inline grant blog
+    # We can solve this in a formal and extensible way later.
+    if (defined $ENV{SWIM_LINK_FORMAT_HACK}) {
+        $link = "https://metacpan.org/pod/$link";
     }
+
     "<a href=\"$link\">$text</a>";
 }
 
