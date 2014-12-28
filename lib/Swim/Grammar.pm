@@ -4,7 +4,7 @@ use Pegex::Base;
 
 extends 'Pegex::Grammar';
 
-use constant file => '../swim-pgx/swim.pgx';
+use constant file => 'ext/swim-pgx/swim.pgx';
 
 use constant start_rules => [
     'document',
@@ -12,7 +12,7 @@ use constant start_rules => [
     'block-list-item',
 ];
 
-sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.57)
+sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.58)
   {
     '+grammar' => 'swim',
     '+toprule' => 'document',
