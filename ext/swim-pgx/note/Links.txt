@@ -1,0 +1,6 @@
+http://example.com
+[http://example.com]
+<http://example.com/[]>
+"label"[http://example.com]
+"label"<http://example.com/[]>
+<ext args>

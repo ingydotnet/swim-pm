@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:ingydotnet/swim-pgx
+	branch = master
+	commit = b988b250c7962169e7438875514d7614169d8a9f
+	parent = 37c61a5a234f5dd6f5c2aec037509f50d3a79b8f
+	cmdver = 0.1.0
