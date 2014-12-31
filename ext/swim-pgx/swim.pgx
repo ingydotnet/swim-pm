@@ -9,6 +9,7 @@
 document: block-top*
 
 block-top:
+  | block-func
   | block-blank
   | block-comment
   | line-comment
@@ -24,17 +25,28 @@ block-top:
 
 block-blank: line-blank
 
+block-func: /
+  LANGLE LANGLE LANGLE
+  ( [ WORD DASH ]+ )
+  (:
+    |
+    EOL
+    ( (: ANY* EOL )*? )
+  )
+  RANGLE RANGLE RANGLE EOL
+/
+
 block-comment: /
   HASH HASH HASH EOL
   (
-    (: ANY*? EOL)*?
+    (: ANY* EOL)*?
   )
   HASH HASH HASH EOL
   line-blank?
 /
 
 line-comment: /
-  HASH SPACE? ( ANY*? ) EOL
+  HASH SPACE? ( ANY* ) EOL
   line-blank?
 /
 
@@ -183,15 +195,15 @@ phrase-code: /
 /
 
 phrase-meta: /
-  marker-func-start '$'
-  ( [^ marker-func-end]+ )
-  marker-func-end
+  marker-pfunc-start '$'
+  ( [^ marker-pfunc-end]+ )
+  marker-pfunc-end
 /
 
 phrase-func: /
-  marker-func-start
-  ( [^ marker-func-end]+ )
-  marker-func-end
+  marker-pfunc-start
+  ( [^ marker-pfunc-end]+ )
+  marker-pfunc-end
 /
 
 phrase-bold:
@@ -257,7 +269,7 @@ marker-block-start: /
 /
 
 marker-phrase-start: /
-  marker-func-start
+  marker-pfunc-start
   marker-code
   marker-bold
   marker-emph
@@ -271,8 +283,8 @@ marker-pref: / SPACE /
 marker-list: / STAR /
 marker-head: / EQUAL /
 marker-comment: / HASH /
-marker-func-start: / LANGLE /
-marker-func-end: / RANGLE /
+marker-pfunc-start: / LANGLE /
+marker-pfunc-end: / RANGLE /
 marker-code: / GRAVE /
 marker-bold: / STAR /
 marker-emph: / SLASH /

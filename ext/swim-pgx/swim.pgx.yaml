@@ -7,7 +7,9 @@ block_blank:
 block_code:
   .rgx: \\\\\\
 block_comment:
-  .rgx: \#\#\#\r?\n((?:.*?\r?\n)*?)\#\#\#\r?\n(?:\ *\r?\n)?
+  .rgx: \#\#\#\r?\n((?:.*\r?\n)*?)\#\#\#\r?\n(?:\ *\r?\n)?
+block_func:
+  .rgx: <<<([\w\-]+)(?:|\r?\n((?:.*\r?\n)*?))\>\>\>\r?\n
 block_head:
   .rgx: (={1,4})\ +(?:(.+?)\ +=+\r?\n|(.+\r?\n(?:[^\s].*\r?\n)*[^\s].*?)\ +=+\r?\n|(.+\r?\n(?:[^\s].*\r?\n)*)(?=[\
     \*=\#]|\r?\n|\z))(?:\ *\r?\n)?
@@ -35,6 +37,7 @@ block_title:
     \*=\#\n]\ ).*\S.*(?:\r?\n|\z)))(?=(?:\ *\r?\n)|\z))?(?:\ *\r?\n)?
 block_top:
   .any:
+  - .ref: block_func
   - .ref: block_blank
   - .ref: block_comment
   - .ref: line_comment
@@ -55,4 +58,4 @@ document:
 line_blank:
   .rgx: (?:\ *\r?\n)
 line_comment:
-  .rgx: \#\ ?(.*?)\r?\n(?:\ *\r?\n)?
+  .rgx: \#\ ?(.*)\r?\n(?:\ *\r?\n)?
