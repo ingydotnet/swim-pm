@@ -1,7 +1,7 @@
 =meta: 0.0.2
 
 name: Swim
-version: 0.1.31
+version: 0.1.32
 abstract: See What I Mean?!
 homepage: http://swimtext.org
 language: perl
@@ -28,6 +28,11 @@ requires:
   Pegex: 0.41
   Text::Autoformat: 0
   YAML::XS: 0
+
+badge: travis
+see:
+- Swim::Plugin::badge
+- Swim::Plugin::cpan
 
 =zild:
   include_testml: 1

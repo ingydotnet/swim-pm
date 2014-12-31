@@ -1,4 +1,9 @@
 ---
+version: 0.1.32
+date:    Wed Dec 31 15:55:12 PST 2014
+changes:
+- Add block-func support
+---
 version: 0.1.31
 date:    Sun Oct 26 22:56:22 UTC 2014
 changes:
