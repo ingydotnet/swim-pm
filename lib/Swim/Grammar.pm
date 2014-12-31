@@ -4,7 +4,7 @@ use Pegex::Base;
 
 extends 'Pegex::Grammar';
 
-use constant file => 'ext/swim-pgx/swim.pgx';
+use constant file => '../swim-pm/ext/swim-pgx/swim.pgx';
 
 use constant start_rules => [
     'document',
@@ -12,7 +12,7 @@ use constant start_rules => [
     'block-list-item',
 ];
 
-sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.58)
+sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.59)
   {
     '+grammar' => 'swim',
     '+toprule' => 'document',
@@ -24,7 +24,10 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.58)
       '.rgx' => qr/\G\\\\\\/
     },
     'block_comment' => {
-      '.rgx' => qr/\G\#\#\#\r?\n((?:.*?\r?\n)*?)\#\#\#\r?\n(?:\ *\r?\n)?/
+      '.rgx' => qr/\G\#\#\#\r?\n((?:.*\r?\n)*?)\#\#\#\r?\n(?:\ *\r?\n)?/
+    },
+    'block_func' => {
+      '.rgx' => qr/\G<<<([\w\-]+)(?:|\r?\n((?:.*\r?\n)*?))\>\>\>\r?\n/
     },
     'block_head' => {
       '.rgx' => qr/\G(={1,4})\ +(?:(.+?)\ +=+\r?\n|(.+\r?\n(?:[^\s].*\r?\n)*[^\s].*?)\ +=+\r?\n|(.+\r?\n(?:[^\s].*\r?\n)*)(?=[\ \*=\#]|\r?\n|\z))(?:\ *\r?\n)?/
@@ -101,6 +104,9 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.58)
     'block_top' => {
       '.any' => [
         {
+          '.ref' => 'block_func'
+        },
+        {
           '.ref' => 'block_blank'
         },
         {
@@ -149,7 +155,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.58)
       '.rgx' => qr/\G(?:\ *\r?\n)/
     },
     'line_comment' => {
-      '.rgx' => qr/\G\#\ ?(.*?)\r?\n(?:\ *\r?\n)?/
+      '.rgx' => qr/\G\#\ ?(.*)\r?\n(?:\ *\r?\n)?/
     },
     'marker_bold' => {
       '.rgx' => qr/\G\*/

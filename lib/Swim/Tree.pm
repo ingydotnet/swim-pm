@@ -4,6 +4,11 @@ extends 'Pegex::Tree';
 
 has meta => {};
 
+sub got_block_func {
+    my ($self, $content) = @_;
+    return {bfunc => $content};
+}
+
 sub got_block_blank {
     my ($self, $text) = @_;
     $self->add('blank');
@@ -60,7 +65,7 @@ sub got_block_list_bullet {
             $item;
         } @items
     ];
-    +{ list => $items };
+    return { list => $items };
 }
 
 sub got_block_list_number {
@@ -76,7 +81,7 @@ sub got_block_list_number {
             $item;
         } @items
     ];
-    +{ olist => $items };
+    return { olist => $items };
 }
 
 sub got_block_list_data {
@@ -102,7 +107,7 @@ sub got_block_list_data {
             $result;
         } @items
     ];
-    +{ data => $items };
+    return { data => $items };
 }
 
 sub got_block_title {
@@ -111,7 +116,7 @@ sub got_block_title {
     if (defined $abstract) {
         $name = $self->collapse($self->parse($name));
         $abstract = $self->collapse($self->parse($abstract));
-        +{title => [ $name, $abstract ]};
+        return {title => [ $name, $abstract ]};
     }
     else {
         $self->add_parse(title => $name);
@@ -143,7 +148,7 @@ sub got_phrase_meta {
 
 sub got_phrase_func {
     my ($self, $content) = @_;
-    +{func => $content};
+    return {pfunc => $content};
 }
 
 sub got_phrase_code {
@@ -210,12 +215,12 @@ sub add {
             $content = $self->collapse($content);
         }
     }
-    +{ $tag => $content }
+    return { $tag => $content }
 }
 
 sub add_parse {
     my ($self, $tag, $text, $start) = @_;
-    +{ $tag => $self->collapse($self->parse($text, $start)) };
+    return { $tag => $self->collapse($self->parse($text, $start)) };
 }
 
 sub parse {

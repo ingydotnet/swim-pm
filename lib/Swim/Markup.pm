@@ -48,23 +48,45 @@ sub render_node {
     $out;
 }
 
-sub render_func {
+sub render_pfunc {
     my ($self, $node) = @_;
     if ($node =~ /^([\-\w]+)(?:[\ \:]|\z)((?s:.*)?)$/) {
         my ($name, $args) = ($1, $2);
-        (my $method = "phrase_func_$name") =~ s/-/_/g;
-        (my $plugin = "Swim::Plugin::$name") =~ s/-/::/g;
-        while (1) {
-            if ($self->can($method)) {
-                my $out = $self->$method($args);
-                return $out if defined $out;
-            }
-            last if $plugin eq "Swim::Plugin";
-            eval "require $plugin";
-            $plugin =~ s/(.*)::.*/$1/;
-        }
+        my $out = $self->_render_func(phrase => $name, $args);
+        return $out if defined $out;
     }
-    "<$node>";
+    ref "<$node>"
+}
+
+sub render_bfunc {
+    my ($self, $content) = @_;
+    my ($name, $args) = @$content;
+    $args = '' unless defined $args;
+    my $out = $self->_render_func(block => $name, $args);
+    return $out if defined $out;
+    if ($args) {
+        chomp $args;
+        return "<<<$name\n$args\n>>>\n";
+    }
+    else {
+        return "<<<$name>>>\n";
+    }
+}
+
+sub _render_func {
+    my ($self, $type, $name, $args) = @_;
+    (my $method = "${type}_func_$name") =~ s/-/_/g;
+    (my $plugin = "Swim::Plugin::$name") =~ s/-/::/g;
+    while (1) {
+        if ($self->can($method)) {
+            my $out = $self->$method($args);
+            return $out if defined $out;
+        }
+        last if $plugin eq "Swim::Plugin";
+        eval "require $plugin";
+        $plugin =~ s/(.*)::.*/$1/;
+    }
+    return;
 }
 
 my $phrase_types = {
@@ -76,7 +98,7 @@ my $phrase_types = {
         under
         hyper
         link
-        func
+        pfunc
         text
     ) };
 

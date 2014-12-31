@@ -92,7 +92,7 @@ sub render_pref {
     "<pre><code>$out\n</code></pre>\n";
 }
 
-sub render_func {
+sub render_pfunc {
     my ($self, $node) = @_;
     if ($node =~ /^(\w[\-\w]*) ?((?s:.*)?)$/) {
         my ($name, $args) = ($1, $2);
