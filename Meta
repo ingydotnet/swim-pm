@@ -1,12 +1,12 @@
 =meta: 0.0.2
 
 name: Swim
-version: 0.1.32
+version: 0.1.33
 abstract: See What I Mean?!
 homepage: http://swimtext.org
 language: perl
 license: perl
-copyright: 2014
+copyright: 2014-2015
 
 author:
   name: Ingy döt Net

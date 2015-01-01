@@ -1,4 +1,11 @@
 ---
+version: 0.1.33
+date:    Wed Dec 31 21:19:10 PST 2014
+changes:
+- Refactor into OO classes
+- Swim.pm is a converter class
+- Swim::Command has all the bin/swim guts
+---
 version: 0.1.32
 date:    Wed Dec 31 15:55:12 PST 2014
 changes:

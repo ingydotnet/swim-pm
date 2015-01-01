@@ -2,7 +2,9 @@
 
 = Synopsis
 
-  > swim --to=pod doc/MyModule.swim
+  > swim --to=pod doc/MyModule.swim > MyModule.pod
+
+  my $pod = Swim->new->(file => "doc/MyModule.swim")->to_pod;
 
 = Description
 

@@ -3,28 +3,35 @@ package Swim::Util;
 use Encode;
 
 sub merge_meta {
-    require YAML::XS;
-    require Hash::Merge;
-    my ($self, $meta, $yaml) = @_;
-    my $data = eval {
-        YAML::XS::Load(Encode::encode 'UTF-8', $yaml);
-    };
-    if ($@) {
-        warn "Swim meta failed to load:\n$@";
-        $data = {};
-    }
-    Hash::Merge::merge($data, $meta);
+  require YAML::XS;
+  require Hash::Merge;
+  my ($class, $meta, $yaml) = @_;
+  my $data = eval {
+    YAML::XS::Load(Encode::encode 'UTF-8', $yaml);
+  };
+  if ($@) {
+    warn "Swim meta failed to load:\n$@";
+    $data = {};
+  }
+  Hash::Merge::merge($data, $meta);
 }
 
 sub slurp {
-    my ($self, $file) = @_;
+  my ($class, $file) = @_;
+  local $/;
+  my $text;
+  if (defined $file) {
     open my $fh, $file
-        or die "Can't open '$file' for input";
+      or die "Can't open '$file' for input";
     binmode($fh, ':encoding(UTF-8)');
-    local $/;
-    my $meta = <$fh>;
+    $text = <$fh>;
     close $fh;
-    return $meta;
+  }
+  else {
+    binmode(STDIN, ':encoding(UTF-8)');
+    $text = <STDIN>;
+  }
+  return $text;
 }
 
 1;
