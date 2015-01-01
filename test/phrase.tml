@@ -134,3 +134,8 @@ I _LOVE_ NY!
 --- pod
 I _LOVE_ NY!
 
+=== Single char bold
+--- swim
+He was *a* man
+--- html
+<p>He was <strong>a</strong> man</p>

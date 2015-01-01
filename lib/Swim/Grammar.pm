@@ -178,7 +178,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.59)
     'phrase_bold' => {
       '.all' => [
         {
-          '.rgx' => qr/\G\*(?=\S[^\*])/
+          '.rgx' => qr/\G\*(?=\S)(?!\*)/
         },
         {
           '+min' => 1,
@@ -225,7 +225,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.59)
     'phrase_emph' => {
       '.all' => [
         {
-          '.rgx' => qr/\G\/(?=\S[^\/])/
+          '.rgx' => qr/\G\/(?=\S)(?!\/)/
         },
         {
           '+min' => 1,
