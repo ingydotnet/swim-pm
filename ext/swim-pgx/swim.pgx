@@ -207,12 +207,12 @@ phrase-func: /
 /
 
 phrase-bold:
-  / marker-bold (= NS [^ marker-bold]) /
+  / marker-bold (= NS) (! marker-bold) /
   ( !marker-bold phrase-markup )+
   marker-bold
 
 phrase-emph:
-  / marker-emph (= NS [^ marker-emph]) /
+  / marker-emph (= NS) (! marker-emph) /
   ( !marker-emph phrase-markup )+
   marker-emph
 
