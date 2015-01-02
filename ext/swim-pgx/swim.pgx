@@ -26,12 +26,12 @@ block-top:
 block-blank: line-blank
 
 block-func: /
-  LANGLE LANGLE LANGLE
-  ( [ WORD DASH ]+ )
+  LANGLE LANGLE LANGLE SPACE*
+  ( [ WORD DASH ]+ ) SPACE*
   (:
-    |
-    EOL
-    ( (: ANY* EOL )*? )
+    ( ANY*?) SPACE*
+      |
+    EOL ( (: ANY* EOL )*? )
   )
   RANGLE RANGLE RANGLE EOL
 /
