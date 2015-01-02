@@ -1,4 +1,9 @@
 ---
+version: 0.1.35
+date:    Thu Jan  1 18:16:49 PST 2015
+changes:
+- Allow spaces and arguments in one line block-func
+---
 version: 0.1.34
 date:    Wed Dec 31 23:22:30 PST 2014
 changes:
