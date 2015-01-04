@@ -1,6 +1,6 @@
 # Pegex grammar for the Swim markup language
 #
-#   Copyright 2014. Ingy döt Net <ingy@ingy.net>
+#   Copyright 2014-2015. Ingy döt Net <ingy@ingy.net>
 #
 
 %grammar swim
