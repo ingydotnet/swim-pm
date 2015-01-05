@@ -190,7 +190,7 @@ block/explicit and phrase/explicit. There are also escaping mechanisms.
 
 =head3 Block/Implicit Syntaxes
 
-A paragraph is a set of contiguous set of plain text lines. It is terminated
+A paragraph is a contiguous set of plain text lines. It is terminated
 by a blank line or by another block syntax at that level.
 
 I<To be continued>
