@@ -1,4 +1,9 @@
 ---
+version: 0.1.36
+date:    Mon Jan  5 08:26:34 PST 2015
+changes:
+- Doc fix by David Hand++ PR/29
+---
 version: 0.1.35
 date:    Thu Jan  1 18:16:49 PST 2015
 changes:
