@@ -2,7 +2,7 @@ use strict; use warnings;
 package Swim;
 use Pegex::Base;
 
-our $VERSION = '0.1.36';
+our $VERSION = '0.1.37';
 
 has text => ();
 has meta => {};
@@ -98,12 +98,13 @@ sub to_ps {
 sub get_man {
   require IPC::Run;
   my ($self) = @_;
+  $self->option->{complete} = 1;
   my $in = $self->convert('Swim::Pod');
   my ($out, $err);
 
   my @cmd = ('pod2man', '--utf8');
   IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
-    or die "$0: $?";
+    or die "$0: $? - $!";
   die "$err" if $err;
 
   $out;
