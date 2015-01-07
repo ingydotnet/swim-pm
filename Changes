@@ -1,4 +1,9 @@
 ---
+version: 0.1.37
+date:    Wed Jan  7 11:25:21 PST 2015
+changes:
+- Support utf8 in swim --to_man
+---
 version: 0.1.36
 date:    Mon Jan  5 08:26:34 PST 2015
 changes:
