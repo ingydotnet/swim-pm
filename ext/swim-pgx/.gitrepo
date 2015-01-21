@@ -6,6 +6,6 @@
 [subrepo]
 	remote = git@github.com:ingydotnet/swim-pgx
 	branch = master
-	commit = b988b250c7962169e7438875514d7614169d8a9f
-	parent = 37c61a5a234f5dd6f5c2aec037509f50d3a79b8f
+	commit = 88b3cf7a26758b871facd21a3a1f8a6c83eb848a
+	parent = b34dd7082e1e5e1f88bbffe4cabc10859daa6190
 	cmdver = 0.1.0
