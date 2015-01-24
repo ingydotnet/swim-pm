@@ -55,7 +55,7 @@ sub render_pfunc {
         my $out = $self->_render_func(phrase => $name, $args);
         return $out if defined $out;
     }
-    ref "<$node>"
+    return "<$node>";
 }
 
 sub render_bfunc {

@@ -70,7 +70,8 @@ sub run {
   }
   $self->{meta} = $meta;
 
-  binmode(STDOUT, ':utf8');
+  binmode(STDOUT, ':utf8')
+    unless $self->{to} eq 'man';
   my $text = Swim::Util->slurp(@ARGV);
 
   my $method = "to_" . $self->to;
