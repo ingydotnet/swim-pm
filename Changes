@@ -1,4 +1,9 @@
 ---
+version: 0.1.39
+date:    Fri Mar 13 18:15:09 PDT 2015
+changes:
+- Fix Pod cpan-head bug
+---
 version: 0.1.38
 date:    Fri Jan 23 20:55:13 PST 2015
 changes:
