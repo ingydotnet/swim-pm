@@ -1,4 +1,9 @@
 ---
+version: 0.1.40
+date:    Sat Oct 10 01:13:21 UTC 2015
+changes:
+- Replace Perl stuff in manpages with appropriate content
+---
 version: 0.1.39
 date:    Fri Mar 13 18:15:09 PDT 2015
 changes:
