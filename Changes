@@ -1,4 +1,11 @@
 ---
+version: 0.1.41
+date:    Tue Oct 20 17:12:48 UTC 2015
+changes:
+- Change the manpage gen date to be 'Month YEAR'
+- Like "October 2015"
+- Less churn in generated docs
+---
 version: 0.1.40
 date:    Sat Oct 10 01:13:21 UTC 2015
 changes:

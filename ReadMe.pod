@@ -15,7 +15,7 @@ Swim - See What I Mean?!
 
 =head1 Version
 
-This document describes L<Swim> version B<0.1.40>.
+This document describes L<Swim> version B<0.1.41>.
 
 =head1 Synopsis
 
