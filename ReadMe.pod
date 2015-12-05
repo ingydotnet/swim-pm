@@ -21,7 +21,7 @@ This document describes L<Swim> version B<0.1.41>.
 
     > swim --to=pod doc/MyModule.swim > MyModule.pod
 
-    my $pod = Swim->new->(file => "doc/MyModule.swim")->to_pod;
+    my $pod = Swim->new(file => "doc/MyModule.swim")->to_pod;
 
 =head1 Description
 
