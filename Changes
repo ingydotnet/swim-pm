@@ -1,4 +1,10 @@
 ---
+version: 0.1.43
+date:    Thu Feb 25 11:50:52 PST 2016
+changes:
+- Add a pod-custom-link support to meta
+- Undocumented feature for now
+---
 version: 0.1.42
 date:    Wed Jan 27 22:07:11 PST 2016
 changes:

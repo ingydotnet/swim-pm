@@ -121,9 +121,28 @@ sub render_hyper {
 sub render_link {
     my ($self, $node) = @_;
     my ($link, $text) = @{$node}{qw(link text)};
+    $link = $self->custom_link($link)
+        if defined $self->meta and
+            defined $self->meta->{'pod-custom-link'};
     (length $text == 0)
     ? $self->render_phrase(L => $link)
     : $self->render_phrase(L => "$text|$link");
+}
+
+sub custom_link {
+    my ($self, $link) = @_;
+    my $customs = $self->meta->{'pod-custom-link'};
+    ref($customs) =~ 'ARRAY'
+        or die "Meta 'pod-custom-array' must be an array of hashes";
+    for my $custom (@$customs) {
+        my $regex = $custom->{match}
+            or die "No 'match' regex for 'pod-custom-link' meta";
+        my $format = $custom->{format}
+            or die "No 'format' string for 'pod-custom-link' meta";
+        my @captures = ($link =~ m/$regex/g) or next;
+        return sprintf $format, @captures;
+    }
+    return $link;
 }
 
 sub render_phrase {
