@@ -61,6 +61,25 @@ sub render_item {
     $out;
 }
 
+sub render_data {
+    my ($self, $node) = @_;
+    my $out = '';
+    push @{$self->{bullet}}, '*';
+    for my $item (@$node) {
+        my ($term, $def, $rest) = @$item;
+        $term = $self->render($term);
+        $out .= "* $term\n\n";
+        if (length $def) {
+            $out .= $self->render($def) . "\n\n";
+        }
+        if ($rest) {
+            $out .= $self->render($rest) . "\n";
+        }
+    }
+    pop @{$self->{bullet}};
+    $out;
+}
+
 sub render_pref {
     my ($self, $node) = @_;
     return '' if @{$self->{bullet}};

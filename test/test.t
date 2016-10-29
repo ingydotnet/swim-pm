@@ -68,26 +68,26 @@ __DATA__
 
 Diff = 1
 
-Label = 'Swim to ByteCode - $BlockLabel'
-*swim.parse('Byte') == *byte
-Label = 'Swim to HTML - $BlockLabel'
-*swim.parse('HTML') == *html
+# Label = 'Swim to ByteCode - $BlockLabel'
+# *swim.parse('Byte') == *byte
+# Label = 'Swim to HTML - $BlockLabel'
+# *swim.parse('HTML') == *html
 Label = 'Swim to Markdown - $BlockLabel'
 *swim.parse('Markdown') == *markdown
-Label = 'Swim to Pod - $BlockLabel'
-*swim.parse('Pod') == *pod
+# Label = 'Swim to Pod - $BlockLabel'
+# *swim.parse('Pod') == *pod
 
-%Include block.tml
-%Include bugs.tml
-%Include comment.tml
-%Include edge.tml
-%Include head.tml
-%Include hyper.tml
-%Include link.tml
+# %Include block.tml
+# %Include bugs.tml
+# %Include comment.tml
+# %Include edge.tml
+# %Include head.tml
+# %Include hyper.tml
+# %Include link.tml
 %Include list-data.tml
-%Include list.tml
-%Include meta.tml
-%Include para.tml
-%Include phrase-func.tml
-%Include phrase.tml
-%Include pre.tml
+# %Include list.tml
+# %Include meta.tml
+# %Include para.tml
+# %Include phrase-func.tml
+# %Include phrase.tml
+# %Include pre.tml
