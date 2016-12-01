@@ -23,6 +23,7 @@ devel:
 
 requires:
   perl: 5.8.1
+  IPC::Run: 0
   Hash::Merge: 0
   HTML::Escape: 0
   Pegex: 0.41
