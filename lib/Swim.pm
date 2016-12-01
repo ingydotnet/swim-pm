@@ -51,7 +51,7 @@ sub to_txt {
   my @cmd = ('pod2text');
 
   IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
-    or die "$0: $?: $!";
+    or die "$cmd[0]: $? - $err";
   die "$err" if $err;
 
   $out;
@@ -80,7 +80,7 @@ sub to_pdf {
   my ($in, $out, $err) = $self->get_man;
   my @cmd = ('groffer', '--pdf', '--to-stdout');
   IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
-    or die "$cmd[0]: $?: $!";
+    or die "$cmd[0]: $? - $err";
   die "$err" if $err;
   $out;
 }
@@ -91,7 +91,7 @@ sub to_dvi {
   my ($in, $out, $err) = $self->get_man;
   my @cmd = ('groffer', '--dvi', '--to-stdout');
   IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
-    or die "$cmd[0]: $?";
+    or die "$cmd[0]: $? - $err";
   die "$err" if $err;
   $out;
 }
@@ -102,7 +102,7 @@ sub to_ps {
   my ($in, $out, $err) = $self->get_man;
   my @cmd = ('groffer', '--ps', '--to-stdout');
   IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
-    or die "$cmd[0]: $?";
+    or die "$cmd[0]: $? - $err";
   die "$err" if $err;
   $out;
 }
@@ -116,7 +116,7 @@ sub get_man {
 
   my @cmd = ('pod2man', '--utf8');
   IPC::Run::run(\@cmd, \$in, \$out, \$err, IPC::Run::timeout(10))
-    or die "$0: $? - $!";
+    or die "$0: $? - $err";
   die "$err" if $err;
 
   $out;
