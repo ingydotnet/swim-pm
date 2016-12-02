@@ -1,4 +1,11 @@
 ---
+version: 0.1.44
+date:    Fri Dec  2 15:26:19 PST 2016
+changes:
+- Apply PR/32 typo (@perlpunk++)
+- Apply PR/34 IPC::Run dependency (@perlpunk++)
+- Apply PR/35 Output IPC::Run stderr (@perlpunk++)
+---
 version: 0.1.43
 date:    Thu Feb 25 11:50:52 PST 2016
 changes:
