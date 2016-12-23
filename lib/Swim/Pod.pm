@@ -42,6 +42,12 @@ sub render_para {
                     # ignore => sub { $_ =~ qr!\bhttps?://! },
                 }
             );
+            # Attempt to repair places where Text::Autoformat cuts http links:
+            while (
+                $out =~
+                    s{\ *\n?(L<http.*)\n([^>]*>)([.,!?:]?)(?:\ *\n?)}
+                    {\n$1$2$3\n}g
+            ) {};
         }
         chomp $out;
         return $out;

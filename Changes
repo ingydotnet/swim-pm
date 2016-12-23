@@ -1,4 +1,9 @@
 ---
+version: 0.1.45
+date:    Fri Dec 23 21:09:21 CET 2016
+changes:
+- Fix split lines on hyperlinks in Pod
+---
 version: 0.1.44
 date:    Fri Dec  2 15:26:19 PST 2016
 changes:
