@@ -201,7 +201,7 @@ I<To be continued>
 
 =head2 Build this distribution
 
-See the L<https://github.com/JJ/swim-pm/blob/master/About> file for instructions on installation using L<Zilla::Dist>
+See the L<https://github.com/ingydotnet/swim-pm/blob/master/About> file for instructions on installation using L<Zilla::Dist>
 
 
 =head1 Author
