@@ -199,6 +199,11 @@ blank line or by another block syntax at that level.
 
 I<To be continued>
 
+=head2 Build this distribution
+
+See the L<About> file for instructions on installation using L<Zilla::Dist>
+
+
 =head1 Author
 
 Ingy döt Net <ingy@cpan.org>
