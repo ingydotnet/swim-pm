@@ -1,4 +1,9 @@
 ---
+version: 0.1.46
+date:    Sun Feb 12 13:45:52 PST 2017
+changes:
+- Release after pause-cleanup screwed up Swim dists
+---
 version: 0.1.45
 date:    Fri Dec 23 21:09:21 CET 2016
 changes:

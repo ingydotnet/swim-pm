@@ -2,7 +2,7 @@ use strict; use warnings;
 package Swim;
 use Pegex::Base;
 
-our $VERSION = '0.1.45';
+our $VERSION = '0.1.46';
 
 has text => ();
 has meta => {};
