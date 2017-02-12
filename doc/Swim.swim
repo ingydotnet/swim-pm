@@ -155,4 +155,8 @@ by a blank line or by another block syntax at that level.
 
 /To be continued/
 
+== Build this distribution
+
+See the "About file"<About> for instructions on how to build. You will have to install Zilla::Dist first.  
+
 <<<cpan-tail>>>
