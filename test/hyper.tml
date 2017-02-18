@@ -55,6 +55,5 @@ Check out "this"[./example] for details.
 <p>Check out <a href="./example">this</a> for details.</p>
 --- markdown
 Check out [this](./example) for details.
---- pod
-Check out L<this|./example> for details.
+
 
