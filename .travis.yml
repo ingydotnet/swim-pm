@@ -22,11 +22,17 @@ perl:
 install:
 - cpanm --quiet --notest
   Devel::Cover::Report::Coveralls
+  constant
+  Encode
+  FindBin
+  Getopt::Long
   Hash::Merge
   HTML::Escape
   IPC::Run
   Pegex
+  strict
   Text::Autoformat
+  warnings
   YAML::XS
   TestML
 
