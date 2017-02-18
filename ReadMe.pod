@@ -151,7 +151,7 @@ Consider this example document:
 
     A paragraph *is* a block. It gets divided into phrases like 'pure text' and
     *bold text*. A bold phrase can be divided: *all bold /some
-    italic/*. You can also add [links to things](things).
+    italic/*. You can also add "links to things"[things].
 
     * Lists are blocks.
     * Each item is a block.
@@ -202,8 +202,8 @@ I<To be continued>
 
 =head2 Build this distribution
 
-See the L<About file|About> for instructions on how to build. You will have to
-install Zilla::Dist first.
+See the L<About file|./About> for instructions on how to build. You will have
+to install Zilla::Dist first.
 
 After Zilla::Dist is installed,
 

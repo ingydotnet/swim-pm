@@ -158,7 +158,7 @@ by a blank line or by another block syntax at that level.
 
 == Build this distribution
 
-See the "About file"[About] for instructions on how to build. You will have to install Zilla::Dist first.
+See the "About file"[./About] for instructions on how to build. You will have to install Zilla::Dist first.
 
 After Zilla::Dist is installed,
 
