@@ -227,6 +227,7 @@ phrase-hyper:
 phrase-hyper-named: /
   DOUBLE ( [^ DOUBLE ]+ ) DOUBLE
   LSQUARE (https?: NS*? ) RSQUARE
+  LSQUARE (./ NS*? ) RSQUARE	
 /
 
 phrase-hyper-explicit: /

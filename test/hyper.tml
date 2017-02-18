@@ -48,4 +48,13 @@ Check out [this](http://example.com) for details.
 --- pod
 Check out L<this|http://example.com> for details.
 
+=== Relative hyperlink
+--- swim
+Check out "this"[./example] for details.
+--- html
+<p>Check out <a href="./example">this</a> for details.</p>
+--- markdown
+Check out [this](./example) for details.
+--- pod
+Check out L<this|./example> for details.
 
