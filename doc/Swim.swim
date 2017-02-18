@@ -158,12 +158,13 @@ by a blank line or by another block syntax at that level.
 
 == Build this distribution
 
-=for HTML See the <a href='About'>About</a> file for instructions on how to build.
+=begin html
 
+See the <a href='About'>About</a> file for instructions on how to build.
 
-You will have to install [Zilla::Dist] first.
+=end html
 
-After Zilla::Dist is installed,
+You will have to install [Zilla::Dist] first. After it is installed,
 
   zild make prereqs
 

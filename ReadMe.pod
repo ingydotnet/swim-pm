@@ -202,10 +202,13 @@ I<To be continued>
 
 =head2 Build this distribution
 
-=for HTML See the <a href='About'>About</a> file for instructions on how to build.
-You will have to install L<Zilla::Dist> first.
+=begin html
 
-After Zilla::Dist is installed,
+See the <a href='About'>About</a> file for instructions on how to build.
+
+=end html
+
+You will have to install L<Zilla::Dist> first. After it is installed,
 
     zild make prereqs
 
