@@ -3,7 +3,7 @@
 name: Swim
 version: 0.1.46
 abstract: See What I Mean?!
-homepage: http://swimtext.org
+homepage: http://github.com/ingydotnet/swim-pm
 language: perl
 license: perl
 copyright: 2014-2017
@@ -29,6 +29,12 @@ requires:
   Pegex: 0.41
   Text::Autoformat: 0
   YAML::XS: 0
+  Encode: 0
+  FindBin: 0
+  Getopt::Long: 0
+  constant: 0
+  strict: 0
+  warnings: 0
 
 badge: travis
 see:

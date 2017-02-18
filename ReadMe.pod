@@ -150,7 +150,8 @@ into more phrases.
 Consider this example document:
 
     A paragraph *is* a block. It gets divided into phrases like 'pure text' and
-    *bold text*. A bold phrase can be divided: *all bold /some italic/*.
+    *bold text*. A bold phrase can be divided: *all bold /some
+    italic/*. You can also add "links to things"[http://things].
 
     * Lists are blocks.
     * Each item is a block.
@@ -198,6 +199,25 @@ A paragraph is a contiguous set of plain text lines. It is terminated by a
 blank line or by another block syntax at that level.
 
 I<To be continued>
+
+=head2 Build this distribution
+
+=begin html
+
+See the <a href='About'>About</a> file for instructions on how to build.
+
+=end html
+
+You will have to install L<Zilla::Dist> first. After it is installed,
+
+    zild make prereqs
+
+to install needed prerequisites.
+
+    zild make update
+
+will re-generate the different files from the Zilla::Dist templates or .swim
+files present in the distribution, such as this one generated from Swim.swim
 
 =head1 Author
 
