@@ -1,3 +1,18 @@
+#!/usr/bin/env testml
+
+*swim.parse('Byte') == *byte
+  :"Swim to ByteCode - +"
+
+*swim.parse('HTML') == *html
+  :"Swim to HTML - +"
+
+*swim.parse('Markdown') == *markdown
+  :"Swim to Markdown - +"
+
+*swim.parse('Pod') == *pod
+  :"Swim to Pod - +"
+
+
 === Data List
 --- swim
 - term one :: Definition 1 is /just/ a line

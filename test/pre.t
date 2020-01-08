@@ -12,17 +12,18 @@
 *swim.parse('Pod') == *pod
   :"Swim to Pod - +"
 
-%Import block
-%Import bugs
-%Import comment
-%Import edge
-%Import head
-%Import hyper
-%Import link
-%Import list-data
-%Import list
-%Import meta
-%Import para
-%Import phrase-func
-%Import phrase
-%Import pre
+
+=== Preformatted with Blank Lines
+--- swim
+Code:
+
+  a = b
+
+  b = c
+
+--- pod
+Code:
+
+    a = b
+
+    b = c
