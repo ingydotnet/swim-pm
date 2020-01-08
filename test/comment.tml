@@ -1,15 +1,16 @@
 === Block Comment
---- swim
-\###
+--- swim(<)
+    ###
 
-Comment line 1
+    Comment line 1
 
 
-  Comment line 2
+      Comment line 2
 
-\###
+    ###
 
-Paragraph
+    Paragraph
+
 --- byte
 +comment
  \nComment line 1\n\n\n  Comment line 2\n\n
@@ -17,6 +18,7 @@ Paragraph
 +para
  Paragraph
 -para
+
 --- html
 <!--
 
@@ -29,8 +31,10 @@ Comment line 1
 -->
 
 <p>Paragraph</p>
+
 --- markdown
 Paragraph
+
 --- pod
 =begin comment
 
@@ -44,12 +48,15 @@ Comment line 1
 
 Paragraph
 
-=== Line Comment
---- swim
-\# This is a comment line.
-\# Another. Eat next blank line.
 
-Paragraph text.
+
+=== Line Comment
+--- swim(<)
+    # This is a comment line.
+    # Another. Eat next blank line.
+
+    Paragraph text.
+
 --- byte
 +comment
  This is a comment line.
@@ -60,14 +67,17 @@ Paragraph text.
 +para
  Paragraph text.
 -para
+
 --- html
 <!-- This is a comment line. -->
 
 <!-- Another. Eat next blank line. -->
 
 <p>Paragraph text.</p>
+
 --- markdown
 Paragraph text.
+
 --- pod
 =for comment This is a comment line.
 

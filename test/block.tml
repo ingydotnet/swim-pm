@@ -1,10 +1,10 @@
 === Horizontal Rule
---- swim
-foo
+--- swim(<)
+    foo
 
-----
+    ----
 
-bar
+    bar
 --- html
 <p>foo</p>
 

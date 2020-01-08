@@ -1,6 +1,7 @@
 === List with code
 --- swim
 * Foo `bar`
+
 --- byte
 +list
 +item
@@ -10,8 +11,10 @@
 -code
 -item
 -list
+
 # --- markdown
 # * Foo `bar`
+
 --- pod
 =over
 
@@ -20,6 +23,7 @@
 =back
 
 === '::' in data paragraph
+
 --- swim
 - Dump
   Data::Dumper is OK
@@ -30,6 +34,7 @@
  Data::Dumper is OK
 -para
 -data
+
 --- pod
 =over
 

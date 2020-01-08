@@ -1,13 +1,15 @@
 === Name/Abstract Title
---- swim
-New::Black
-==========
 
-Is Still Black
+--- swim(<)
+    New::Black
+    ==========
 
-= Synopsis
+    Is Still Black
 
-Back in black, hit the sack.
+    = Synopsis
+
+    Back in black, hit the sack.
+
 --- byte
 +title
  New::Black
@@ -21,15 +23,17 @@ Back in black, hit the sack.
 +para
  Back in black, hit the sack.
 -para
---- markdown
-New::Black
-==========
 
-Is Still Black
+--- markdown(<)
+    New::Black
+    ==========
 
-\# Synopsis
+    Is Still Black
 
-Back in black, hit the sack.
+    # Synopsis
+
+    Back in black, hit the sack.
+
 --- pod
 =head1 Name
 
@@ -38,6 +42,7 @@ New::Black - Is Still Black
 =head1 Synopsis
 
 Back in black, hit the sack.
+
 --- html
 <h1 class="title">New::Black</h1>
 
@@ -47,47 +52,57 @@ Back in black, hit the sack.
 
 <p>Back in black, hit the sack.</p>
 
-=== Title and Paragraph
---- swim
-My Title
-========
 
-O HAI
-FREND
---- byte_XXX_FIXME
+
+=== Title and Paragraph
+
+--- swim(<)
+    My Title
+    ========
+
+    O HAI
+    FREND
+
+--- byte-XXX-FIXME
 +title
  My Title
 -title
 +para
  O HAI\nFREND
 -para
+
 --- html
 <h1 class="title">My Title</h1>
 
 <p>O HAI FREND</p>
---- markdown
-My Title
-========
 
-O HAI FREND
+--- markdown(<)
+    My Title
+    ========
+
+    O HAI FREND
 
 --- pod
 =head1 My Title
 
 O HAI FREND
 
+
+
 === Headers
---- swim
-== Level 2 Header ==
-Paragraph text.
 
-\=== Level 3 Header
-Multi Line
+--- swim(<)
+    == Level 2 Header ==
+    Paragraph text.
 
-Paragraph text
+    === Level 3 Header
+    Multi Line
 
-==== Level 4 Header
-  preformatted text
+    Paragraph text
+
+    ==== Level 4 Header
+      preformatted text
+
 --- byte
 +head2
  Level 2 Header
@@ -107,6 +122,7 @@ Paragraph text
 +pref
  preformatted text
 -pref
+
 --- html
 <h2>Level 2 Header</h2>
 
@@ -120,18 +136,20 @@ Paragraph text
 
 <pre><code>preformatted text
 </code></pre>
---- markdown
-\## Level 2 Header
 
-Paragraph text.
+--- markdown(<)
+    ## Level 2 Header
 
-\### Level 3 Header Multi Line
+    Paragraph text.
 
-Paragraph text
+    ### Level 3 Header Multi Line
 
-\#### Level 4 Header
+    Paragraph text
 
-    preformatted text
+    #### Level 4 Header
+
+        preformatted text
+
 --- pod
 =head2 Level 2 Header
 
@@ -145,14 +163,18 @@ Paragraph text
 
     preformatted text
 
+
+
 === Markup in Title
---- swim
-`Foo`
-=====
 
-The *New* Foo
+--- swim(<)
+    `Foo`
+    =====
 
-Start
+    The *New* Foo
+
+    Start
+
 --- pod
 =head1 Name
 
@@ -161,7 +183,9 @@ C<Foo> - The B<New> Foo
 Start
 
 === Markup in Header
---- swim
-= This /and/ That
+
+--- swim(<)
+    = This /and/ That
+
 --- html
 <h1>This <em>and</em> That</h1>
