@@ -1,4 +1,9 @@
 ---
+version: 0.1.46_001
+date:    Wed Jan  8 23:42:04 PST 2020
+changes:
+- Fix for https://github.com/ingydotnet/inline-pm/pull/74
+---
 version: 0.1.46
 date:    Sun Feb 12 13:45:52 PST 2017
 changes:
