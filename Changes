@@ -1,4 +1,9 @@
 ---
+version: 0.1.48
+date:    Thu Jan  9 13:11:26 PST 2020
+changes:
+- Fix a formatting bug from ingydotnet/git-subrepo
+---
 version: 0.1.47
 date:    Thu Jan  9 08:55:57 PST 2020
 changes:
