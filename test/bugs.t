@@ -3,14 +3,25 @@
 *swim.parse('Byte') == *byte
   :"Swim to ByteCode - +"
 
-*swim.parse('HTML') == *html
-  :"Swim to HTML - +"
-
 *swim.parse('Markdown') == *markdown
   :"Swim to Markdown - +"
 
 *swim.parse('Pod') == *pod
   :"Swim to Pod - +"
+
+*swim.parse('Pod', 'wrap') == *pod-wrap
+  :"Swim to Pod - +"
+
+
+
+=== https://github.com/ingydotnet/inline-pm/pull/74/files
+--- swim
+Best of all, it works the same on both Unix and Microsoft Windows. See
+[Inline-Support] for support information.
+
+--- pod-wrap
+Best of all, it works the same on both Unix and Microsoft Windows. See L<Inline-Support> for support information.
+
 
 
 === List with code

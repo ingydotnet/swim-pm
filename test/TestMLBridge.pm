@@ -11,11 +11,19 @@ use Swim::Markdown;
 use Swim::Pod;
 
 sub parse {
-    my ($self, $swim, $emitter) = @_;
+    my ($self, $swim, $emitter, $style) = @_;
+
+    $style ||= '';
+
+    my $receiver = "Swim::$emitter"->new;
+
+    if ($style eq 'wrap') {
+        $receiver->option->{wrap} = 1;
+    }
 
     my $parser = Pegex::Parser->new(
         grammar => 'Swim::Grammar'->new,
-        receiver => "Swim::$emitter"->new,
+        receiver => $receiver,
         debug => $ENV{SWIM_PEGEX_DEBUG},
     );
 
