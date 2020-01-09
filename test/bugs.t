@@ -14,6 +14,15 @@
 
 
 
+=== Fix a formatting bug from ingydotnet/git-subrepo
+--- swim
+The `clone` command accepts the `--branch=` `--edit`, `--force` and `--message=` options.
+
+--- pod-wrap
+The C<clone> command accepts the C<--branch=> C<--edit>, C<--force> and C<--message=> options.
+
+
+
 === https://github.com/ingydotnet/inline-pm/pull/74/files
 --- swim
 Best of all, it works the same on both Unix and Microsoft Windows. See
